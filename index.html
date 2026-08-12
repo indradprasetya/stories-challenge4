@@ -111,6 +111,12 @@
       gap: 8px;
     }
 
+    .toolbar[hidden],
+    .view-tabs[hidden],
+    .download[hidden] {
+      display: none;
+    }
+
     .document {
       width: min(100%, 960px);
       min-height: 400px;
@@ -388,6 +394,8 @@
   <script>
     const documentView = document.querySelector("#document");
     const chapterNav = document.querySelector("#chapter-nav");
+    const toolbar = document.querySelector(".toolbar");
+    const viewTabs = document.querySelector(".view-tabs");
     const markdownTab = document.querySelector("#markdown-tab");
     const jsonTab = document.querySelector("#json-tab");
     const downloadMarkdown = document.querySelector("#download-markdown");
@@ -423,7 +431,7 @@
     function renderNavigation() {
       chapterNav.innerHTML = "";
       const stories = new Map();
-      for (const chapter of chapters) {
+      for (const chapter of chapters.filter(page => page.type === "chapter")) {
         if (!stories.has(chapter.story)) stories.set(chapter.story, []);
         stories.get(chapter.story).push(chapter);
       }
@@ -448,6 +456,35 @@
           button.setAttribute("aria-current", chapter === activeChapter ? "page" : "false");
           button.addEventListener("click", () => {
             location.hash = chapter.slug;
+          });
+          list.append(button);
+        }
+
+        group.append(title, list);
+        chapterNav.append(group);
+      }
+
+      const resources = chapters.filter(page => page.type !== "chapter");
+      if (resources.length) {
+        const group = document.createElement("section");
+        group.className = "story-group";
+
+        const title = document.createElement("h2");
+        title.className = "story-title";
+        title.textContent = "Resources";
+
+        const list = document.createElement("div");
+        list.className = "chapter-nav menu p-0";
+
+        for (const page of resources) {
+          const button = document.createElement("button");
+          button.className = "chapter-button btn btn-ghost h-auto min-h-10 justify-start px-3 py-2 font-normal";
+          button.type = "button";
+          button.textContent = page.title;
+          button.dataset.slug = page.slug;
+          button.setAttribute("aria-current", page === activeChapter ? "page" : "false");
+          button.addEventListener("click", () => {
+            location.hash = page.slug;
           });
           list.append(button);
         }
@@ -512,33 +549,42 @@
 
     async function openChapter(chapter) {
       activeChapter = chapter;
-      document.title = `Story ${chapter.story}, Chapter ${chapter.chapter} | Story Documentation`;
-      documentView.innerHTML = '<p class="text-base-content/60">Loading chapter...</p>';
+      const hasJson = Boolean(chapter.json);
+      const isAssetPage = chapter.type === "assets";
+      toolbar.hidden = isAssetPage;
+      viewTabs.hidden = !hasJson;
+      downloadMarkdown.hidden = isAssetPage;
+      downloadJson.hidden = !hasJson || isAssetPage;
+      if (!hasJson || isAssetPage) activeView = "markdown";
+      document.title = chapter.type === "chapter"
+        ? `Story ${chapter.story}, Chapter ${chapter.chapter} | Story Documentation`
+        : `${chapter.title} | Story Documentation`;
+      documentView.innerHTML = '<p class="text-base-content/60">Loading page...</p>';
       renderNavigation();
 
       try {
         const [markdownResponse, jsonResponse] = await Promise.all([
           fetch(freshUrl(chapter.markdown), { cache: "no-store" }),
-          fetch(freshUrl(chapter.json), { cache: "no-store" })
+          hasJson ? fetch(freshUrl(chapter.json), { cache: "no-store" }) : null
         ]);
 
-        if (!markdownResponse.ok || !jsonResponse.ok) {
-          throw new Error("Chapter files were not found.");
+        if (!markdownResponse.ok || (jsonResponse && !jsonResponse.ok)) {
+          throw new Error("Page files were not found.");
         }
 
-        [markdownSource, jsonSource] = await Promise.all([
-          markdownResponse.text(),
-          jsonResponse.text()
-        ]);
+        markdownSource = await markdownResponse.text();
+        jsonSource = jsonResponse ? await jsonResponse.text() : "";
 
-        JSON.parse(jsonSource);
+        if (jsonResponse) JSON.parse(jsonSource);
         downloadMarkdown.href = freshUrl(chapter.markdown);
         downloadMarkdown.download = chapter.markdown;
-        downloadJson.href = freshUrl(chapter.json);
-        downloadJson.download = chapter.json;
+        if (jsonResponse) {
+          downloadJson.href = freshUrl(chapter.json);
+          downloadJson.download = chapter.json;
+        }
         await renderActiveView();
       } catch (error) {
-        showError(`Could not load this chapter: ${error.message}`);
+        showError(`Could not load this page: ${error.message}`);
       }
     }
 

@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "id": "action_apologize",
+      "type": "action",
+      "visualDirection": "Two paws meeting in a mutual apology and reconciliation gesture.",
+      "usedIn": [
+        "story-2-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "action_approach",
+      "type": "action",
+      "visualDirection": "A calm caregiver moving closer at the child's eye level with open, non-threatening body language.",
+      "usedIn": [
+        "story-1-chapter-1",
+        "story-1-chapter-3",
+        "story-2-chapter-1",
+        "story-2-chapter-2",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 5
+    },
+    {
+      "id": "action_ask_quiet",
+      "type": "action",
+      "visualDirection": "A gentle quiet gesture with one finger near the mouth and a relaxed expression.",
+      "usedIn": [
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "action_asking",
+      "type": "action",
+      "visualDirection": "A calm question bubble and attentive listening gesture.",
+      "usedIn": [
+        "story-1-chapter-3",
+        "story-2-chapter-1",
+        "story-2-chapter-2",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 4
+    },
+    {
+      "id": "action_attention_reset",
+      "type": "action",
+      "visualDirection": "Two hands clapping once to regain attention without intimidating the child.",
+      "usedIn": [
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "action_blaming",
+      "type": "action",
+      "visualDirection": "An accusatory pointing gesture with a sharp question mark to show judgment before listening.",
+      "usedIn": [
+        "story-2-chapter-1",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "action_candy",
+      "type": "action",
+      "visualDirection": "A small wrapped candy with a distinct silhouette.",
+      "usedIn": [
+        "story-1-chapter-3"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "action_crayon",
+      "type": "action",
+      "visualDirection": "One clearly recognizable drawing crayon with a simple silhouette.",
+      "usedIn": [
+        "story-1-chapter-1",
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "action_give_bandage",
+      "type": "action",
+      "visualDirection": "A clean adhesive bandage held ready for first aid.",
+      "usedIn": [
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "action_lollipop",
+      "type": "action",
+      "visualDirection": "A round, colorful lollipop on a short stick.",
+      "usedIn": [
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "action_paper",
+      "type": "action",
+      "visualDirection": "A clean replacement sheet of drawing paper.",
+      "usedIn": [
+        "story-1-chapter-3"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "action_scold",
+      "type": "action",
+      "visualDirection": "A tense pointing gesture and raised voice marks showing an unhelpful reprimand.",
+      "usedIn": [
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "action_toy",
+      "type": "action",
+      "visualDirection": "A small, friendly cat toy that reads clearly at card size.",
+      "usedIn": [
+        "story-1-chapter-1",
+        "story-2-chapter-2"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "background_classroom",
+      "type": "background",
+      "visualDirection": "A warm classroom with drawing supplies, clear floor space for characters, and quiet areas for text bubbles.",
+      "usedIn": [
+        "story-1-chapter-1",
+        "story-1-chapter-2",
+        "story-1-chapter-3"
+      ],
+      "reuseCount": 3
+    },
+    {
+      "id": "background_playground",
+      "type": "background",
+      "visualDirection": "A friendly outdoor playground with a slide, soft ground, open character space, and room for text bubbles.",
+      "usedIn": [
+        "story-2-chapter-1",
+        "story-2-chapter-2",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 3
+    },
+    {
+      "id": "jojo_angry",
+      "type": "expression",
+      "visualDirection": "Jojo: Angry expression with tense brows and firm, closed body language.",
+      "usedIn": [
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "jojo_calm",
+      "type": "expression",
+      "visualDirection": "Jojo: Calm breathing, relaxed shoulders, and a settled expression.",
+      "usedIn": [
+        "story-1-chapter-2",
+        "story-2-chapter-1",
+        "story-2-chapter-2"
+      ],
+      "reuseCount": 3
+    },
+    {
+      "id": "jojo_defensive",
+      "type": "expression",
+      "visualDirection": "Jojo: Guarded posture with crossed arms or pulled-back shoulders.",
+      "usedIn": [
+        "story-2-chapter-1",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "jojo_frustrated",
+      "type": "expression",
+      "visualDirection": "Jojo: Frustrated expression with tense shoulders and an impatient posture.",
+      "usedIn": [
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "jojo_happy",
+      "type": "expression",
+      "visualDirection": "Jojo: Open happy expression with an easy smile and positive body language.",
+      "usedIn": [
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "jojo_neutral",
+      "type": "expression",
+      "visualDirection": "Jojo: Relaxed neutral posture that can support listening, waiting, or ordinary conversation.",
+      "usedIn": [
+        "story-1-chapter-2",
+        "story-2-chapter-2",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 3
+    },
+    {
+      "id": "jojo_questioning",
+      "type": "expression",
+      "visualDirection": "Jojo: Head tilted with raised brows, showing confusion or questioning an unclear action.",
+      "usedIn": [
+        "story-1-chapter-2",
+        "story-2-chapter-2",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 3
+    },
+    {
+      "id": "jojo_relieved",
+      "type": "expression",
+      "visualDirection": "Jojo: Relieved expression with softened eyes and released tension.",
+      "usedIn": [
+        "story-2-chapter-1",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "jojo_sad",
+      "type": "expression",
+      "visualDirection": "Jojo: Lowered ears and gaze with a clearly sad but not crying expression.",
+      "usedIn": [
+        "story-2-chapter-1",
+        "story-2-chapter-2",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 3
+    },
+    {
+      "id": "rhodey_angry",
+      "type": "expression",
+      "visualDirection": "Rhodey: Angry expression with tense brows and firm, closed body language.",
+      "usedIn": [
+        "story-2-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "rhodey_calm",
+      "type": "expression",
+      "visualDirection": "Rhodey: Calm breathing, relaxed shoulders, and a settled expression.",
+      "usedIn": [
+        "story-1-chapter-1",
+        "story-1-chapter-2",
+        "story-1-chapter-3",
+        "story-2-chapter-2",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 5
+    },
+    {
+      "id": "rhodey_crying",
+      "type": "expression",
+      "visualDirection": "Rhodey: Visible tears, trembling mouth, and a distressed crying expression.",
+      "usedIn": [
+        "story-1-chapter-3"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "rhodey_defensive",
+      "type": "expression",
+      "visualDirection": "Rhodey: Guarded posture with crossed arms or pulled-back shoulders.",
+      "usedIn": [
+        "story-2-chapter-1",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "rhodey_frustrated",
+      "type": "expression",
+      "visualDirection": "Rhodey: Frustrated expression with tense shoulders and an impatient posture.",
+      "usedIn": [
+        "story-1-chapter-1",
+        "story-1-chapter-3"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "rhodey_happy",
+      "type": "expression",
+      "visualDirection": "Rhodey: Open happy expression with an easy smile and positive body language.",
+      "usedIn": [
+        "story-1-chapter-1"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "rhodey_neutral",
+      "type": "expression",
+      "visualDirection": "Rhodey: Relaxed neutral posture that can support listening, waiting, or ordinary conversation.",
+      "usedIn": [
+        "story-1-chapter-2",
+        "story-2-chapter-1",
+        "story-2-chapter-2"
+      ],
+      "reuseCount": 3
+    },
+    {
+      "id": "rhodey_questioning",
+      "type": "expression",
+      "visualDirection": "Rhodey: Head tilted with raised brows, showing confusion or questioning an unclear action.",
+      "usedIn": [
+        "story-1-chapter-1",
+        "story-1-chapter-2",
+        "story-1-chapter-3",
+        "story-2-chapter-1",
+        "story-2-chapter-2",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 6
+    },
+    {
+      "id": "rhodey_relieved",
+      "type": "expression",
+      "visualDirection": "Rhodey: Relieved expression with softened eyes and released tension.",
+      "usedIn": [
+        "story-1-chapter-3",
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "rhodey_sad",
+      "type": "expression",
+      "visualDirection": "Rhodey: Lowered ears and gaze with a clearly sad but not crying expression.",
+      "usedIn": [
+        "story-2-chapter-1"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "jojo_drawing",
+      "type": "pose",
+      "visualDirection": "Jojo seated and drawing; the crayon and drawing surface are included in this complete image.",
+      "usedIn": [
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "jojo_rhodey_handshake",
+      "type": "pose",
+      "visualDirection": "One combined illustration of Jojo and Rhodey facing each other and shaking paws after a mutual apology.",
+      "usedIn": [
+        "story-2-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "rhodey_bandaged",
+      "type": "pose",
+      "visualDirection": "Rhodey with a visible bandage already applied to his knee; a complete image requiring no overlay.",
+      "usedIn": [
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "rhodey_crying_torn_paper",
+      "type": "pose",
+      "visualDirection": "Rhodey crying while holding two visibly torn pieces of his drawing paper.",
+      "usedIn": [
+        "story-1-chapter-3"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "rhodey_drawing",
+      "type": "pose",
+      "visualDirection": "Rhodey seated and drawing; the crayon and drawing surface are included in this complete image.",
+      "usedIn": [
+        "story-1-chapter-1",
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 2
+    },
+    {
+      "id": "rhodey_holding_new_paper",
+      "type": "pose",
+      "visualDirection": "Rhodey happily holding one clean replacement sheet, ready to draw again.",
+      "usedIn": [
+        "story-1-chapter-3"
+      ],
+      "reuseCount": 1
+    },
+    {
+      "id": "rhodey_injured_sitting",
+      "type": "pose",
+      "visualDirection": "Rhodey sitting after a fall and holding one scraped knee; usable before first aid is applied.",
+      "usedIn": [
+        "story-2-chapter-3"
+      ],
+      "reuseCount": 1
+    }
+  ]
+}

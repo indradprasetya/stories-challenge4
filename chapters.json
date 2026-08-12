@@ -1,10 +1,69 @@
 [
   {
+    "type": "chapter",
     "story": 1,
     "chapter": 1,
     "slug": "story-1-chapter-1",
     "title": "Make Rhodey Want to Draw",
     "markdown": "story 1 chapter 1.md",
     "json": "story 1 chapter 1.json"
+  },
+  {
+    "type": "chapter",
+    "story": 1,
+    "chapter": 2,
+    "slug": "story-1-chapter-2",
+    "title": "Help Jojo Settle Down and Draw",
+    "markdown": "story 1 chapter 2.md",
+    "json": "story 1 chapter 2.json"
+  },
+  {
+    "type": "chapter",
+    "story": 1,
+    "chapter": 3,
+    "slug": "story-1-chapter-3",
+    "title": "Help Rhodey After His Paper Tears",
+    "markdown": "story 1 chapter 3.md",
+    "json": "story 1 chapter 3.json"
+  },
+  {
+    "type": "chapter",
+    "story": 2,
+    "chapter": 1,
+    "slug": "story-2-chapter-1",
+    "title": "Validate Jojo's Feelings",
+    "markdown": "story 2 chapter 1.md",
+    "json": "story 2 chapter 1.json"
+  },
+  {
+    "type": "chapter",
+    "story": 2,
+    "chapter": 2,
+    "slug": "story-2-chapter-2",
+    "title": "Help Rhodey Share the Slide",
+    "markdown": "story 2 chapter 2.md",
+    "json": "story 2 chapter 2.json"
+  },
+  {
+    "type": "chapter",
+    "story": 2,
+    "chapter": 3,
+    "slug": "story-2-chapter-3",
+    "title": "Listen Before Helping Rhodey",
+    "markdown": "story 2 chapter 3.md",
+    "json": "story 2 chapter 3.json"
+  },
+  {
+    "type": "assets",
+    "slug": "artist-assets",
+    "title": "Artist Assets",
+    "markdown": "artist assets.md",
+    "json": "artist assets.json"
+  },
+  {
+    "type": "tech",
+    "slug": "tech",
+    "title": "Technical Guide",
+    "markdown": "tech.md"
   }
 ]

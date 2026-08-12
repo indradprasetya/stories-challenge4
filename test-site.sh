@@ -15,14 +15,39 @@ until curl -fsS "$base_url/index.html" >/dev/null 2>&1; do
 done
 
 curl -fsS "$base_url/chapters.json" |
-  jq -e 'length == 1 and .[0].story == 1 and .[0].chapter == 1' >/dev/null
+  jq -e '
+    length == 8 and
+    ([.[] | select(.type == "chapter")] | length == 6) and
+    ([.[] | select(.type == "assets")] | length == 1) and
+    ([.[] | select(.type == "tech" and .markdown == "tech.md" and has("json") == false)] | length == 1)
+  ' >/dev/null
 curl -fsS "$base_url/story%201%20chapter%201.md" | grep -q "Make Rhodey Want to Draw"
 curl -fsS "$base_url/story%201%20chapter%201.json" |
   jq -e '
     .id == "rhodey_wants_to_draw" and
+    .schemaVersion == 4 and
     (.outcomes | length == 9) and
-    (.grids | length == 3 and all(.[]; .backgroundID == "background_classroom"))
+    (.grids | length == 3 and all(.[]; .backgroundID == "background_classroom")) and
+    (.grids | map(.dropSlots | length) == [1, 1, 0])
   ' >/dev/null
+
+for chapter_file in \
+  story%201%20chapter%202 \
+  story%201%20chapter%203 \
+  story%202%20chapter%201 \
+  story%202%20chapter%202 \
+  story%202%20chapter%203
+do
+  curl -fsS "$base_url/$chapter_file.md" >/dev/null
+  curl -fsS "$base_url/$chapter_file.json" | jq -e '.schemaVersion == 4' >/dev/null
+done
+
+curl -fsS "$base_url/artist%20assets.md" | grep -q "Artist Assets"
+if curl -fsS "$base_url/artist%20assets.md" | grep -q "Reuse Summary"; then
+  exit 1
+fi
+curl -fsS "$base_url/artist%20assets.json" | jq -e '.assets | length > 0' >/dev/null
+curl -fsS "$base_url/tech.md" >/dev/null
 
 page_source=$(curl -fsS "$base_url/index.html")
 printf '%s' "$page_source" | grep -Fq 'location.hostname.endsWith(".github.io")'
