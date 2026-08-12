@@ -92,9 +92,14 @@ for (const page of chapterPages) {
 
   assert.equal(story.schemaVersion, 4, `${page.slug} must use schema version 4`);
   assert.equal(story.gridCount, story.grids.length, `${page.slug} gridCount mismatch`);
-  assert.equal(story.choiceCount, story.gridCount - 1, `${page.slug} choiceCount mismatch`);
+  assert.equal(story.choiceCount, story.grids.reduce((sum, grid) => sum + grid.dropSlots.length, 0), `${page.slug} choiceCount must equal total drop slots`);
   assert.equal(story.outcomes.length, expectedCount, `${page.slug} outcome count mismatch`);
   assert.match(markdown, new RegExp(`Possibilities:\\s*${expectedCount}`), `${page.slug} must document its possibility count`);
+  assert.match(markdown, new RegExp(`Choice Slots:\\s*${story.choiceCount}`), `${page.slug} must document its choice slot count`);
+  assert.doesNotMatch(markdown, /^> Story:/m, `${page.slug} overview must not repeat its story number`);
+  assert.match(markdown, /### Grid & Choice Slot Breakdown/, `${page.slug} must explain its grid and choice slots`);
+  const possibilityFactors = Array(story.choiceCount).fill(story.actions.length).join(" × ");
+  assert.match(markdown, new RegExp(`\\*\\*Possibility formula:\\*\\* ${possibilityFactors} = ${expectedCount} outcomes \\(${story.actions.length} actions across ${story.choiceCount} slots\\)`), `${page.slug} must explain its possibility formula`);
   localized(story.title, `${page.slug} title`);
   localized(story.description, `${page.slug} description`);
 
@@ -142,6 +147,8 @@ for (const page of chapterPages) {
   if (page.slug === "story-2-chapter-3") {
     assert.deepEqual(story.grids.map(grid => grid.dropSlots.length), [2, 1, 1, 0]);
     assert.deepEqual(story.grids[0].dropSlots.map(slot => slot.targetCharacterID), ["jojo", "rhodey"]);
+    assert.match(markdown, /Jojo \+ Rhodey \(one targeted slot each\)/, "dual-slot chapter must explain both targeted slots");
+    assert.match(markdown, /Both slots must be filled before Grid 2 appears/, "dual-slot chapter must explain its completion rule");
 
     const ideal = story.outcomes.find(outcome => outcome.isIdeal);
     const reversedFirstStep = {
@@ -152,14 +159,14 @@ for (const page of chapterPages) {
     assert.equal(findOutcome(story, [{ ...reversedFirstStep, placements: reversedFirstStep.placements.slice(0, 1) }, ...ideal.steps.slice(1)]), undefined, "incomplete dual placement must not resolve an outcome");
   } else {
     assert.deepEqual(story.grids.map(grid => grid.dropSlots.length), [
-      ...Array(story.choiceCount).fill(1),
+      ...Array(story.gridCount - 1).fill(1),
       0
     ]);
   }
 
   const outcomeKeys = new Set();
   for (const outcome of story.outcomes) {
-    assert.equal(outcome.steps.length, story.choiceCount, `${page.slug} outcome step count mismatch`);
+    assert.equal(outcome.steps.length, story.gridCount - 1, `${page.slug} outcome step count mismatch`);
     assert.equal(outcome.states.length, story.gridCount, `${page.slug} outcome state count mismatch`);
     assert.ok(["success", "progress", "retry"].includes(outcome.category), `${page.slug} invalid category`);
     assert.equal(typeof outcome.finalState, "string", `${page.slug} finalState is required`);

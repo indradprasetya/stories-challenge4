@@ -718,7 +718,7 @@ function buildStory(spec) {
     description: spec.description,
     initialState: spec.initialState.replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase(),
     gridCount: spec.gridCount,
-    choiceCount: spec.gridCount - 1,
+    choiceCount: grids.reduce((sum, grid) => sum + grid.dropSlots.length, 0),
     actions: spec.actions.map(({ id, name }) => ({ id, name })),
     characters: Object.entries(spec.characterNames).map(([id, displayName]) => ({
       id,
@@ -742,18 +742,46 @@ function markdownFor(spec, story) {
   const poseRows = poseAssets.map(asset => `| \`${asset.id}\` | ${asset.direction} |`).join("\n");
   const actionRows = spec.actions.map(action => `| \`${action.id}\` | ${action.direction} |`).join("\n");
   const characterNames = Object.values(spec.characterNames).join(", ");
+  const possibilityFactors = Array(story.choiceCount).fill(story.actions.length).join(" × ");
+  const gridRows = story.grids.map((grid, index) => {
+    if (!grid.dropSlots.length) {
+      return `| Grid ${grid.order} | Result | 0 | None | Shows the final result; no action can be dropped. |`;
+    }
+
+    const targetedCharacters = grid.dropSlots
+      .map(slot => slot.targetCharacterID)
+      .filter(Boolean)
+      .map(characterID => spec.characterNames[characterID]);
+    const target = targetedCharacters.length
+      ? `${targetedCharacters.join(" + ")} (one targeted slot each)`
+      : "Scene (general slot)";
+    const nextGrid = `Grid ${index + 2}`;
+    const completion = grid.dropSlots.length > 1
+      ? `Both slots must be filled before ${nextGrid} appears.`
+      : `One action completes this grid and reveals ${nextGrid}.`;
+    return `| Grid ${grid.order} | Interactive | ${grid.dropSlots.length} | ${target} | ${completion} |`;
+  }).join("\n");
 
   return `## Chapter ${spec.chapter}: ${spec.title.en}
 
 > **Overview**
 >
-> Story: ${spec.story}  
 > Character${Object.keys(spec.characterNames).length > 1 ? "s" : ""}: ${characterNames}  
 > Grid: ${spec.gridCount}  
-> Choice Grid: ${spec.gridCount - 1}  
+> Choice Slots: ${story.choiceCount}  
 > Possibilities: ${story.outcomes.length}
 
 **Synopsis**: ${spec.description.en}
+
+### Grid & Choice Slot Breakdown
+
+A **grid** is one story frame. The grid count includes the final result frame. A **choice slot** is one place where the player must drop an action; one interactive grid may contain more than one slot.
+
+| Grid | Role | Choice Slots | Slot Target | Completion Rule |
+| --- | --- | ---: | --- | --- |
+${gridRows}
+
+**Possibility formula:** ${possibilityFactors} = ${story.outcomes.length} outcomes (${story.actions.length} actions across ${story.choiceCount} slots). Every slot accepts any chapter action, and actions may be repeated in later slots.
 
 ### Actions
 

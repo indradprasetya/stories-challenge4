@@ -26,6 +26,8 @@ Every grid includes an ordered `dropSlots` array.
 
 The `order` of grids and drop slots is authoritative. Do not infer order from object keys or the order in which the player dragged items.
 
+`choiceCount` is the total number of drop slots across all interactive grids, not the number of interactive grids. A chapter with slot counts `[2, 1, 1, 0]` therefore has `choiceCount: 4`.
+
 ## Outcome Steps
 
 Each outcome contains an ordered `steps` array. A step describes the choices made on a source grid:

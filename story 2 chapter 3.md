@@ -2,13 +2,25 @@
 
 > **Overview**
 >
-> Story: 2  
 > Characters: Jojo, Rhodey  
 > Grid: 4  
-> Choice Grid: 3  
+> Choice Slots: 4  
 > Possibilities: 625
 
 **Synopsis**: Rhodey falls and says Jojo pushed him. Ask both children, learn that the fall was accidental, approach calmly, then give Rhodey a bandage.
+
+### Grid & Choice Slot Breakdown
+
+A **grid** is one story frame. The grid count includes the final result frame. A **choice slot** is one place where the player must drop an action; one interactive grid may contain more than one slot.
+
+| Grid | Role | Choice Slots | Slot Target | Completion Rule |
+| --- | --- | ---: | --- | --- |
+| Grid 1 | Interactive | 2 | Jojo + Rhodey (one targeted slot each) | Both slots must be filled before Grid 2 appears. |
+| Grid 2 | Interactive | 1 | Scene (general slot) | One action completes this grid and reveals Grid 3. |
+| Grid 3 | Interactive | 1 | Scene (general slot) | One action completes this grid and reveals Grid 4. |
+| Grid 4 | Result | 0 | None | Shows the final result; no action can be dropped. |
+
+**Possibility formula:** 5 × 5 × 5 × 5 = 625 outcomes (5 actions across 4 slots). Every slot accepts any chapter action, and actions may be repeated in later slots.
 
 ### Actions
 
