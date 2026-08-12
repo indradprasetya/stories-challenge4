@@ -5,7 +5,6 @@
 | --------- | ----------- | ------ |
 | Jojo      | Hyperactive | M      |
 | Rhodey    | Tantrum     | M      |
-| Timmy     | Shy         | F      |
 
 > **Overview**
 >
