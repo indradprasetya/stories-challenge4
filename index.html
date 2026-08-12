@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Story documentation for ADA Challenge 4.">
+  <title>Story Documentation</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --surface-muted: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --code: #f8fafc;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      color: var(--text);
+      background: var(--bg);
+      font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      min-height: 100dvh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100dvh;
+      padding: 28px 20px;
+      overflow-y: auto;
+      background: var(--surface);
+      border-right: 1px solid var(--line);
+    }
+
+    .brand {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-note {
+      margin: 0 0 30px;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .level-group + .level-group {
+      margin-top: 24px;
+    }
+
+    .level-title {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .chapter-nav {
+      display: grid;
+      gap: 6px;
+    }
+
+    .chapter-button {
+      width: 100%;
+      padding: 10px 12px;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      border-radius: var(--radius);
+    }
+
+    .chapter-button:hover {
+      background: var(--surface-muted);
+    }
+
+    .chapter-button[aria-current="page"] {
+      color: var(--accent);
+      font-weight: 700;
+      background: var(--accent-soft);
+    }
+
+    main {
+      min-width: 0;
+      padding: 40px clamp(20px, 5vw, 72px) 80px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: min(100%, 1040px);
+      margin: 0 auto 26px;
+    }
+
+    .view-tabs,
+    .downloads {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .view-tab,
+    .download {
+      min-height: 42px;
+      padding: 9px 14px;
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .view-tab:hover,
+    .download:hover {
+      border-color: var(--accent);
+    }
+
+    .view-tab[aria-selected="true"] {
+      color: #ffffff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .document {
+      width: min(100%, 1040px);
+      min-height: 400px;
+      margin: 0 auto;
+      padding: clamp(24px, 5vw, 64px);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .status {
+      color: var(--muted);
+    }
+
+    .error {
+      color: #a83d3d;
+    }
+
+    .document h1,
+    .document h2,
+    .document h3,
+    .document h4,
+    .document h5 {
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    .document h1 {
+      margin-top: 0;
+      font-size: clamp(1.875rem, 4vw, 2.5rem);
+    }
+
+    .document h2 {
+      margin-top: 2.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .document h5 {
+      margin: 3rem 0 1rem;
+      font-size: 1.25rem;
+    }
+
+    .document a {
+      color: var(--accent);
+    }
+
+    .document blockquote {
+      margin: 1.5rem 0;
+      padding: 14px 18px;
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .document blockquote p {
+      margin: 0.25rem 0;
+    }
+
+    .document table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+    }
+
+    .document th,
+    .document td {
+      padding: 11px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .document th {
+      background: var(--surface-muted);
+    }
+
+    .document code {
+      padding: 0.15em 0.35em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: var(--code);
+      border-radius: 6px;
+    }
+
+    .document pre {
+      max-width: 100%;
+      padding: 18px;
+      overflow: auto;
+      background: var(--code);
+      border-radius: var(--radius);
+    }
+
+    .document pre code {
+      padding: 0;
+      background: transparent;
+    }
+
+    .document .mermaid {
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    .json-preview {
+      margin: 0;
+      white-space: pre;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        display: block;
+      }
+
+      aside {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand-note {
+        margin-bottom: 18px;
+      }
+
+      .chapter-nav {
+        display: flex;
+        overflow-x: auto;
+      }
+
+      .chapter-button {
+        width: auto;
+        min-width: max-content;
+      }
+
+      main {
+        padding: 24px 14px 56px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+      }
+
+      .view-tabs,
+      .downloads {
+        width: 100%;
+      }
+
+      .view-tab,
+      .download {
+        flex: 1;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .document {
+        padding: 22px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside aria-label="Story chapters">
+      <h1 class="brand">Story Documentation</h1>
+      <p class="brand-note">ADA Challenge 4</p>
+      <nav id="chapter-nav"></nav>
+    </aside>
+
+    <main>
+      <div class="toolbar">
+        <div class="view-tabs" role="tablist" aria-label="Preview format">
+          <button class="view-tab" id="markdown-tab" type="button" role="tab" aria-selected="true">Documentation</button>
+          <button class="view-tab" id="json-tab" type="button" role="tab" aria-selected="false">JSON</button>
+        </div>
+        <div class="downloads">
+          <a class="download" id="download-markdown" download>Download .md</a>
+          <a class="download" id="download-json" download>Download .json</a>
+        </div>
+      </div>
+
+      <article class="document" id="document" aria-live="polite">
+        <p class="status">Loading chapter...</p>
+      </article>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+  <script>
+    const documentView = document.querySelector("#document");
+    const chapterNav = document.querySelector("#chapter-nav");
+    const markdownTab = document.querySelector("#markdown-tab");
+    const jsonTab = document.querySelector("#json-tab");
+    const downloadMarkdown = document.querySelector("#download-markdown");
+    const downloadJson = document.querySelector("#download-json");
+
+    let chapters = [];
+    let activeChapter;
+    let activeView = "markdown";
+    let markdownSource = "";
+    let jsonSource = "";
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "strict",
+      theme: "neutral"
+    });
+
+    function showError(message) {
+      documentView.innerHTML = "";
+      const error = document.createElement("p");
+      error.className = "error";
+      error.textContent = message;
+      documentView.append(error);
+    }
+
+    function renderNavigation() {
+      chapterNav.innerHTML = "";
+      const levels = new Map();
+      for (const chapter of chapters) {
+        if (!levels.has(chapter.level)) levels.set(chapter.level, []);
+        levels.get(chapter.level).push(chapter);
+      }
+
+      for (const [level, entries] of levels) {
+        const group = document.createElement("section");
+        group.className = "level-group";
+
+        const title = document.createElement("h2");
+        title.className = "level-title";
+        title.textContent = `Level ${level}`;
+
+        const list = document.createElement("div");
+        list.className = "chapter-nav";
+
+        for (const chapter of entries) {
+          const button = document.createElement("button");
+          button.className = "chapter-button";
+          button.type = "button";
+          button.textContent = `Chapter ${chapter.chapter}: ${chapter.title}`;
+          button.dataset.slug = chapter.slug;
+          button.setAttribute("aria-current", chapter === activeChapter ? "page" : "false");
+          button.addEventListener("click", () => {
+            location.hash = chapter.slug;
+          });
+          list.append(button);
+        }
+
+        group.append(title, list);
+        chapterNav.append(group);
+      }
+    }
+
+    async function renderMarkdown() {
+      documentView.innerHTML = marked.parse(markdownSource);
+
+      const blocks = documentView.querySelectorAll("code.language-mermaid");
+      for (const code of blocks) {
+        const diagram = document.createElement("pre");
+        diagram.className = "mermaid";
+        diagram.textContent = code.textContent;
+        code.parentElement.replaceWith(diagram);
+      }
+
+      if (blocks.length) {
+        await mermaid.run({ nodes: documentView.querySelectorAll(".mermaid") });
+      }
+    }
+
+    function renderJson() {
+      documentView.innerHTML = "";
+      const pre = document.createElement("pre");
+      const code = document.createElement("code");
+      pre.className = "json-preview";
+      code.textContent = JSON.stringify(JSON.parse(jsonSource), null, 2);
+      pre.append(code);
+      documentView.append(pre);
+    }
+
+    async function renderActiveView() {
+      markdownTab.setAttribute("aria-selected", activeView === "markdown");
+      jsonTab.setAttribute("aria-selected", activeView === "json");
+
+      try {
+        if (activeView === "markdown") {
+          await renderMarkdown();
+        } else {
+          renderJson();
+        }
+      } catch (error) {
+        showError(`Could not render this chapter: ${error.message}`);
+      }
+    }
+
+    async function openChapter(chapter) {
+      activeChapter = chapter;
+      document.title = `Level ${chapter.level}, Chapter ${chapter.chapter} | Story Documentation`;
+      documentView.innerHTML = '<p class="status">Loading chapter...</p>';
+      renderNavigation();
+
+      try {
+        const [markdownResponse, jsonResponse] = await Promise.all([
+          fetch(chapter.markdown),
+          fetch(chapter.json)
+        ]);
+
+        if (!markdownResponse.ok || !jsonResponse.ok) {
+          throw new Error("Chapter files were not found.");
+        }
+
+        [markdownSource, jsonSource] = await Promise.all([
+          markdownResponse.text(),
+          jsonResponse.text()
+        ]);
+
+        JSON.parse(jsonSource);
+        downloadMarkdown.href = chapter.markdown;
+        downloadMarkdown.download = chapter.markdown;
+        downloadJson.href = chapter.json;
+        downloadJson.download = chapter.json;
+        await renderActiveView();
+      } catch (error) {
+        showError(`Could not load this chapter: ${error.message}`);
+      }
+    }
+
+    function openFromHash() {
+      const slug = location.hash.slice(1);
+      const chapter = chapters.find(entry => entry.slug === slug) || chapters[0];
+      if (chapter && chapter !== activeChapter) {
+        openChapter(chapter);
+      }
+    }
+
+    markdownTab.addEventListener("click", async () => {
+      activeView = "markdown";
+      await renderActiveView();
+    });
+
+    jsonTab.addEventListener("click", async () => {
+      activeView = "json";
+      await renderActiveView();
+    });
+
+    window.addEventListener("hashchange", openFromHash);
+
+    fetch("chapters.json")
+      .then(response => {
+        if (!response.ok) throw new Error("chapters.json was not found.");
+        return response.json();
+      })
+      .then(data => {
+        chapters = data;
+        if (!chapters.length) throw new Error("No chapters are available yet.");
+        openFromHash();
+      })
+      .catch(error => showError(`Could not load the chapter list: ${error.message}`));
+  </script>
+</body>
+</html>
