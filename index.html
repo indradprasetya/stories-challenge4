@@ -1,46 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Story documentation for ADA Challenge 4.">
   <title>Story Documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>
     :root {
       color-scheme: light;
-      --bg: #ffffff;
-      --surface: #ffffff;
-      --surface-muted: #f8fafc;
-      --text: #0f172a;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --accent: #2563eb;
-      --accent-soft: #eff6ff;
-      --code: #f8fafc;
-      --radius: 8px;
+      --color-primary: oklch(54.6% 0.245 262.881);
+      --color-primary-content: #ffffff;
     }
 
     * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       min-height: 100dvh;
-      color: var(--text);
-      background: var(--bg);
       font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    button,
-    a {
-      font: inherit;
-    }
-
-    button:focus-visible,
-    a:focus-visible {
-      outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
-      outline-offset: 3px;
     }
 
     .shell {
@@ -55,8 +35,7 @@
       height: 100dvh;
       padding: 28px 20px;
       overflow-y: auto;
-      background: var(--surface);
-      border-right: 1px solid var(--line);
+      border-right: 1px solid var(--color-base-300);
     }
 
     .brand {
@@ -67,7 +46,7 @@
 
     .brand-note {
       margin: 0 0 30px;
-      color: var(--muted);
+      color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
       font-size: 0.875rem;
     }
 
@@ -77,7 +56,7 @@
 
     .level-title {
       margin: 0 0 8px;
-      color: var(--muted);
+      color: color-mix(in oklab, var(--color-base-content) 60%, transparent);
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -91,23 +70,13 @@
 
     .chapter-button {
       width: 100%;
-      padding: 10px 12px;
-      color: var(--text);
       text-align: left;
-      cursor: pointer;
-      background: transparent;
-      border: 0;
-      border-radius: var(--radius);
-    }
-
-    .chapter-button:hover {
-      background: var(--surface-muted);
     }
 
     .chapter-button[aria-current="page"] {
-      color: var(--accent);
+      color: var(--color-primary);
       font-weight: 700;
-      background: var(--accent-soft);
+      background: color-mix(in oklab, var(--color-primary) 10%, white);
     }
 
     main {
@@ -132,46 +101,12 @@
       gap: 8px;
     }
 
-    .view-tab,
-    .download {
-      min-height: 42px;
-      padding: 9px 14px;
-      color: var(--text);
-      text-decoration: none;
-      cursor: pointer;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-    }
-
-    .view-tab:hover,
-    .download:hover {
-      border-color: var(--accent);
-    }
-
-    .view-tab[aria-selected="true"] {
-      color: #ffffff;
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-
     .document {
       width: min(100%, 1040px);
       min-height: 400px;
       margin: 0 auto;
       padding: clamp(24px, 5vw, 64px);
       overflow: hidden;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-    }
-
-    .status {
-      color: var(--muted);
-    }
-
-    .error {
-      color: #a83d3d;
     }
 
     .document h1,
@@ -191,7 +126,7 @@
     .document h2 {
       margin-top: 2.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--color-base-300);
     }
 
     .document h5 {
@@ -200,15 +135,15 @@
     }
 
     .document a {
-      color: var(--accent);
+      color: var(--color-primary);
     }
 
     .document blockquote {
       margin: 1.5rem 0;
       padding: 14px 18px;
-      background: var(--accent-soft);
-      border-left: 4px solid var(--accent);
-      border-radius: 0 var(--radius) var(--radius) 0;
+      background: color-mix(in oklab, var(--color-primary) 8%, white);
+      border: 1px solid color-mix(in oklab, var(--color-primary) 20%, white);
+      border-radius: var(--radius-box);
     }
 
     .document blockquote p {
@@ -226,26 +161,26 @@
     .document td {
       padding: 11px 14px;
       text-align: left;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--color-base-300);
     }
 
     .document th {
-      background: var(--surface-muted);
+      background: var(--color-base-200);
     }
 
     .document code {
       padding: 0.15em 0.35em;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      background: var(--code);
-      border-radius: 6px;
+      background: var(--color-base-200);
+      border-radius: var(--radius-field);
     }
 
     .document pre {
       max-width: 100%;
       padding: 18px;
       overflow: auto;
-      background: var(--code);
-      border-radius: var(--radius);
+      background: var(--color-base-200);
+      border-radius: var(--radius-box);
     }
 
     .document pre code {
@@ -257,8 +192,8 @@
       display: flex;
       justify-content: center;
       padding: 24px;
-      background: var(--surface);
-      border: 1px solid var(--line);
+      background: var(--color-base-100);
+      border: 1px solid var(--color-base-300);
     }
 
     .json-preview {
@@ -281,7 +216,7 @@
         height: auto;
         padding: 20px;
         border-right: 0;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid var(--color-base-300);
       }
 
       .brand-note {
@@ -324,9 +259,9 @@
     }
   </style>
 </head>
-<body>
+<body class="bg-base-100 text-base-content">
   <div class="shell">
-    <aside aria-label="Story chapters">
+    <aside class="bg-base-100" aria-label="Story chapters">
       <h1 class="brand">Story Documentation</h1>
       <p class="brand-note">ADA Challenge 4</p>
       <nav id="chapter-nav"></nav>
@@ -334,18 +269,24 @@
 
     <main>
       <div class="toolbar">
-        <div class="view-tabs" role="tablist" aria-label="Preview format">
-          <button class="view-tab" id="markdown-tab" type="button" role="tab" aria-selected="true">Documentation</button>
-          <button class="view-tab" id="json-tab" type="button" role="tab" aria-selected="false">JSON</button>
+        <div class="view-tabs tabs tabs-border" role="tablist" aria-label="Preview format">
+          <button class="view-tab tab tab-active text-primary" id="markdown-tab" type="button" role="tab" aria-selected="true">Documentation</button>
+          <button class="view-tab tab" id="json-tab" type="button" role="tab" aria-selected="false">JSON</button>
         </div>
         <div class="downloads">
-          <a class="download" id="download-markdown" download>Download .md</a>
-          <a class="download" id="download-json" download>Download .json</a>
+          <a class="download btn btn-sm btn-outline gap-2" id="download-markdown" download>
+            <i class="ph ph-download-simple text-base" aria-hidden="true"></i>
+            Download .md
+          </a>
+          <a class="download btn btn-sm btn-outline gap-2" id="download-json" download>
+            <i class="ph ph-download-simple text-base" aria-hidden="true"></i>
+            Download .json
+          </a>
         </div>
       </div>
 
-      <article class="document" id="document" aria-live="polite">
-        <p class="status">Loading chapter...</p>
+      <article class="document card border border-base-300 bg-base-100 shadow-none" id="document" aria-live="polite">
+        <p class="text-base-content/60">Loading chapter...</p>
       </article>
     </main>
   </div>
@@ -375,7 +316,7 @@
     function showError(message) {
       documentView.innerHTML = "";
       const error = document.createElement("p");
-      error.className = "error";
+      error.className = "alert alert-error";
       error.textContent = message;
       documentView.append(error);
     }
@@ -397,11 +338,11 @@
         title.textContent = `Level ${level}`;
 
         const list = document.createElement("div");
-        list.className = "chapter-nav";
+        list.className = "chapter-nav menu p-0";
 
         for (const chapter of entries) {
           const button = document.createElement("button");
-          button.className = "chapter-button";
+          button.className = "chapter-button btn btn-ghost h-auto min-h-10 justify-start px-3 py-2 font-normal";
           button.type = "button";
           button.textContent = `Chapter ${chapter.chapter}: ${chapter.title}`;
           button.dataset.slug = chapter.slug;
@@ -446,6 +387,10 @@
     async function renderActiveView() {
       markdownTab.setAttribute("aria-selected", activeView === "markdown");
       jsonTab.setAttribute("aria-selected", activeView === "json");
+      markdownTab.classList.toggle("tab-active", activeView === "markdown");
+      jsonTab.classList.toggle("tab-active", activeView === "json");
+      markdownTab.classList.toggle("text-primary", activeView === "markdown");
+      jsonTab.classList.toggle("text-primary", activeView === "json");
 
       try {
         if (activeView === "markdown") {
@@ -461,7 +406,7 @@
     async function openChapter(chapter) {
       activeChapter = chapter;
       document.title = `Level ${chapter.level}, Chapter ${chapter.chapter} | Story Documentation`;
-      documentView.innerHTML = '<p class="status">Loading chapter...</p>';
+      documentView.innerHTML = '<p class="text-base-content/60">Loading chapter...</p>';
       renderNavigation();
 
       try {
@@ -520,7 +465,11 @@
         if (!chapters.length) throw new Error("No chapters are available yet.");
         openFromHash();
       })
-      .catch(error => showError(`Could not load the chapter list: ${error.message}`));
+      .catch(error => showError(
+        location.protocol === "file:"
+          ? "Open this page through GitHub Pages or http://127.0.0.1:4174. Direct file preview cannot load chapter files."
+          : `Could not load the chapter list: ${error.message}`
+      ));
   </script>
 </body>
 </html>

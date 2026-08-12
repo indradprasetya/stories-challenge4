@@ -1,4 +1,3 @@
-# Level 1
 
 ## Chapter 1: Make Rhodey Want to Draw
 
@@ -74,3 +73,9 @@ flowchart LR
 | `action_get_nearby` | A friendly figure moving closer or sitting beside Rhodey |
 | `action_crayon`     | One clearly recognizable drawing crayon                  |
 | `action_toy`        | Rhodey's simple, recognizable favorite toy               |
+
+**Backgrounds: 1 drawing**
+
+| Asset ID | Used In | Visual Direction |
+| --- | --- | --- |
+| `background_classroom` | Grid 1, Grid 2, Grid 3 | A classroom interior with a clear central area for Rhodey, the cardboard, and text bubbles |

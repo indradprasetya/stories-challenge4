@@ -54,17 +54,20 @@
     {
       "id": "grid_1",
       "order": 1,
-      "locked": true
+      "locked": true,
+      "backgroundID": "background_classroom"
     },
     {
       "id": "grid_2",
       "order": 2,
-      "locked": false
+      "locked": false,
+      "backgroundID": "background_classroom"
     },
     {
       "id": "grid_3",
       "order": 3,
-      "locked": false
+      "locked": false,
+      "backgroundID": "background_classroom"
     }
   ],
   "outcomes": [
