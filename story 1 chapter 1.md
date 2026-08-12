@@ -39,10 +39,10 @@ flowchart LR
     TOY -->|Crayon / Krayon| T_C["Grid 3<br/>rhodey_curious<br/>EN: Can I try the crayon?<br/>ID: Boleh aku mencoba krayonnya?<br/>PROGRESS"]
     TOY -->|Toy / Mainan| T_T["Grid 3<br/>rhodey_distracted<br/>No text bubble<br/>RETRY"]
 
-    classDef initial fill:#E8E8E8,stroke:#555,color:#111
-    classDef progress fill:#FFF3C4,stroke:#C99A00,color:#111
-    classDef success fill:#D6F5DF,stroke:#238636,color:#111
-    classDef retry fill:#FFD9D9,stroke:#C43B3B,color:#111
+    classDef initial fill:#1E293B,stroke:#64748B,color:#F8FAFC
+    classDef progress fill:#422006,stroke:#D97706,color:#FEF3C7
+    classDef success fill:#052E16,stroke:#16A34A,color:#DCFCE7
+    classDef retry fill:#450A0A,stroke:#DC2626,color:#FEE2E2
 
     class START initial
     class NEAR,CRAYON,TOY,N_N,C_N,T_N,T_C progress

@@ -1,10 +1,10 @@
 [
   {
-    "level": 1,
+    "story": 1,
     "chapter": 1,
-    "slug": "level-1-chapter-1",
+    "slug": "story-1-chapter-1",
     "title": "Make Rhodey Want to Draw",
-    "markdown": "level 1 chapter 1.md",
-    "json": "level 1 chapter 1.json"
+    "markdown": "story 1 chapter 1.md",
+    "json": "story 1 chapter 1.json"
   }
 ]

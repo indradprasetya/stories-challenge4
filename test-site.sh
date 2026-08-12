@@ -15,9 +15,9 @@ until curl -fsS "$base_url/index.html" >/dev/null 2>&1; do
 done
 
 curl -fsS "$base_url/chapters.json" |
-  jq -e 'length == 1 and .[0].level == 1 and .[0].chapter == 1' >/dev/null
-curl -fsS "$base_url/level%201%20chapter%201.md" | grep -q "Make Rhodey Want to Draw"
-curl -fsS "$base_url/level%201%20chapter%201.json" |
+  jq -e 'length == 1 and .[0].story == 1 and .[0].chapter == 1' >/dev/null
+curl -fsS "$base_url/story%201%20chapter%201.md" | grep -q "Make Rhodey Want to Draw"
+curl -fsS "$base_url/story%201%20chapter%201.json" |
   jq -e '
     .id == "rhodey_wants_to_draw" and
     (.outcomes | length == 9) and
