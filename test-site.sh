@@ -24,4 +24,9 @@ curl -fsS "$base_url/story%201%20chapter%201.json" |
     (.grids | length == 3 and all(.[]; .backgroundID == "background_classroom"))
   ' >/dev/null
 
+page_source=$(curl -fsS "$base_url/index.html")
+printf '%s' "$page_source" | grep -Fq 'location.hostname.endsWith(".github.io")'
+printf '%s' "$page_source" | grep -Fq 'searchParams.set("_fresh", Date.now())'
+[ "$(printf '%s' "$page_source" | grep -Fo 'cache: "no-store"' | wc -l | tr -d ' ')" -eq 3 ]
+
 echo "site smoke check passed"

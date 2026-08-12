@@ -4,7 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Story documentation for ADA Challenge 4.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Story Documentation</title>
+  <script>
+    const currentUrl = new URL(location.href);
+    if (location.hostname.endsWith(".github.io") && !currentUrl.searchParams.has("_fresh")) {
+      currentUrl.searchParams.set("_fresh", Date.now());
+      location.replace(currentUrl);
+    }
+  </script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" rel="stylesheet" type="text/css">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -377,12 +387,19 @@
     const jsonTab = document.querySelector("#json-tab");
     const downloadMarkdown = document.querySelector("#download-markdown");
     const downloadJson = document.querySelector("#download-json");
+    const assetVersion = Date.now();
 
     let chapters = [];
     let activeChapter;
     let activeView = "markdown";
     let markdownSource = "";
     let jsonSource = "";
+
+    function freshUrl(path) {
+      const url = new URL(path, location.href);
+      url.searchParams.set("_fresh", assetVersion);
+      return url;
+    }
 
     mermaid.initialize({
       startOnLoad: false,
@@ -496,8 +513,8 @@
 
       try {
         const [markdownResponse, jsonResponse] = await Promise.all([
-          fetch(chapter.markdown),
-          fetch(chapter.json)
+          fetch(freshUrl(chapter.markdown), { cache: "no-store" }),
+          fetch(freshUrl(chapter.json), { cache: "no-store" })
         ]);
 
         if (!markdownResponse.ok || !jsonResponse.ok) {
@@ -510,9 +527,9 @@
         ]);
 
         JSON.parse(jsonSource);
-        downloadMarkdown.href = chapter.markdown;
+        downloadMarkdown.href = freshUrl(chapter.markdown);
         downloadMarkdown.download = chapter.markdown;
-        downloadJson.href = chapter.json;
+        downloadJson.href = freshUrl(chapter.json);
         downloadJson.download = chapter.json;
         await renderActiveView();
       } catch (error) {
@@ -540,7 +557,7 @@
 
     window.addEventListener("hashchange", openFromHash);
 
-    fetch("chapters.json")
+    fetch(freshUrl("chapters.json"), { cache: "no-store" })
       .then(response => {
         if (!response.ok) throw new Error("chapters.json was not found.");
         return response.json();
