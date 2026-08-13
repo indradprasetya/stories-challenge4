@@ -15,8 +15,6 @@ Rhodey's drawing paper tears during class and the broken drawing feels important
 ### Hints
 
 - A distressed child may need calm presence before they can explain what happened.
-- Problem solving lands better after the child feels heard.
-- A treat can distract from the feeling without repairing the actual problem.
 
 ### Grid & Choice Slot Breakdown
 

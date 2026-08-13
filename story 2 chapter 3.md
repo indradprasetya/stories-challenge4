@@ -14,9 +14,7 @@ Rhodey falls in the playground and says Jojo pushed him. Rhodey is hurt and cryi
 
 ### Hints
 
-- When two children are involved, listening to both sides prevents unfair blame.
-- Physical care matters, but emotional safety still affects whether the child feels helped.
-- A quick distraction may stop tears briefly without resolving the injury or the misunderstanding.
+- When two children are involved, emotional safety and fairness need to move together.
 
 ### Grid & Choice Slot Breakdown
 

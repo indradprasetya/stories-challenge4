@@ -13,14 +13,6 @@
     {
       "en": "Children often need attention before they can process an instruction.",
       "id": "Anak sering perlu diarahkan perhatiannya sebelum bisa memproses instruksi."
-    },
-    {
-      "en": "A firm correction before connection can make a child defensive.",
-      "id": "Teguran sebelum anak merasa terhubung bisa membuat anak defensif."
-    },
-    {
-      "en": "An activity item works best when the child is already regulated enough to use it.",
-      "id": "Item aktivitas paling efektif saat anak sudah cukup tenang untuk menggunakannya."
     }
   ],
   "initialState": "NOISY",

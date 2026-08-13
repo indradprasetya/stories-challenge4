@@ -13,14 +13,6 @@
     {
       "en": "A child may join an activity more easily after feeling noticed and accompanied.",
       "id": "Anak sering lebih mudah ikut aktivitas setelah merasa diperhatikan dan ditemani."
-    },
-    {
-      "en": "Giving a tool too early can feel like pressure, even when the tool is useful.",
-      "id": "Memberikan alat terlalu cepat bisa terasa seperti tekanan, meskipun alatnya berguna."
-    },
-    {
-      "en": "A toy can change the mood, but it may also pull attention away from the learning goal.",
-      "id": "Mainan bisa mengubah suasana, tetapi juga bisa mengalihkan perhatian dari tujuan belajar."
     }
   ],
   "initialState": "REFUSING",

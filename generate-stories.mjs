@@ -227,9 +227,7 @@ const storySpecs = [
       "Rhodey duduk di kelas tetapi belum merasa siap untuk menggambar. Ia dekat dengan aktivitasnya, tetapi bahasa tubuhnya menunjukkan bahwa ia butuh rasa aman sebelum bisa menikmati alat gambar."
     ),
     hints: [
-      localized("A child may join an activity more easily after feeling noticed and accompanied.", "Anak sering lebih mudah ikut aktivitas setelah merasa diperhatikan dan ditemani."),
-      localized("Giving a tool too early can feel like pressure, even when the tool is useful.", "Memberikan alat terlalu cepat bisa terasa seperti tekanan, meskipun alatnya berguna."),
-      localized("A toy can change the mood, but it may also pull attention away from the learning goal.", "Mainan bisa mengubah suasana, tetapi juga bisa mengalihkan perhatian dari tujuan belajar.")
+      localized("A child may join an activity more easily after feeling noticed and accompanied.", "Anak sering lebih mudah ikut aktivitas setelah merasa diperhatikan dan ditemani.")
     ],
     background: backgrounds.classroom,
     characterNames: { rhodey: "Rhodey" },
@@ -276,9 +274,7 @@ const storySpecs = [
       "Jojo sangat berenergi saat waktunya menggambar dan suaranya membuat Rhodey sulit fokus. Adegan ini tentang membantu Jojo berpindah dari bermain aktif ke aktivitas kelas yang lebih tenang."
     ),
     hints: [
-      localized("Children often need attention before they can process an instruction.", "Anak sering perlu diarahkan perhatiannya sebelum bisa memproses instruksi."),
-      localized("A firm correction before connection can make a child defensive.", "Teguran sebelum anak merasa terhubung bisa membuat anak defensif."),
-      localized("An activity item works best when the child is already regulated enough to use it.", "Item aktivitas paling efektif saat anak sudah cukup tenang untuk menggunakannya.")
+      localized("Children often need attention before they can process an instruction.", "Anak sering perlu diarahkan perhatiannya sebelum bisa memproses instruksi.")
     ],
     background: backgrounds.classroom,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
@@ -348,9 +344,7 @@ const storySpecs = [
       "Kertas gambar Rhodey robek saat di kelas dan gambar itu terasa penting baginya. Ia kesal bukan hanya karena kertasnya rusak, tetapi karena karya yang ia pedulikan terasa hilang tiba-tiba."
     ),
     hints: [
-      localized("A distressed child may need calm presence before they can explain what happened.", "Anak yang sangat sedih mungkin butuh kehadiran tenang sebelum bisa menjelaskan yang terjadi."),
-      localized("Problem solving lands better after the child feels heard.", "Solusi biasanya lebih diterima setelah anak merasa didengarkan."),
-      localized("A treat can distract from the feeling without repairing the actual problem.", "Hadiah makanan bisa mengalihkan perasaan tanpa memperbaiki masalah sebenarnya.")
+      localized("A distressed child may need calm presence before they can explain what happened.", "Anak yang sangat sedih mungkin butuh kehadiran tenang sebelum bisa menjelaskan yang terjadi.")
     ],
     background: backgrounds.classroom,
     characterNames: { rhodey: "Rhodey" },
@@ -403,9 +397,7 @@ const storySpecs = [
       "Jojo merasa sakit hati di taman setelah Rhodey mengatakan sesuatu yang tidak baik. Konfliknya masih kecil, tetapi Jojo perlu merasa perasaannya dianggap serius sebelum bisa lanjut bermain."
     ),
     hints: [
-      localized("Validation starts by making the child feel safe enough to speak.", "Validasi dimulai dari membuat anak merasa cukup aman untuk bicara."),
-      localized("Open questions help children name feelings instead of defending themselves.", "Pertanyaan terbuka membantu anak menyebutkan perasaan, bukan langsung membela diri."),
-      localized("Blame can turn a feeling problem into a bigger conflict.", "Menyalahkan bisa mengubah masalah perasaan menjadi konflik yang lebih besar.")
+      localized("Validation starts by making the child feel safe enough to speak.", "Validasi dimulai dari membuat anak merasa cukup aman untuk bicara.")
     ],
     background: backgrounds.playground,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
@@ -465,9 +457,7 @@ const storySpecs = [
       "Rhodey menghalangi perosotan dan tidak mau Jojo ikut bermain. Dari luar terlihat seperti egois, tetapi alasannya bisa berupa takut, tidak nyaman, atau salah paham tentang rasa aman."
     ),
     hints: [
-      localized("Ask for the reason before pushing children toward repair.", "Tanyakan alasannya sebelum mendorong anak untuk memperbaiki hubungan."),
-      localized("A calm approach can lower the threat level for both children.", "Pendekatan tenang bisa menurunkan rasa terancam pada kedua anak."),
-      localized("An apology feels clearer after both children understand what happened.", "Permintaan maaf terasa lebih jelas setelah kedua anak memahami yang terjadi.")
+      localized("Children can repair a conflict more naturally after the situation feels understood.", "Anak bisa memperbaiki konflik dengan lebih alami setelah situasinya terasa dipahami.")
     ],
     background: backgrounds.playground,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
@@ -537,9 +527,7 @@ const storySpecs = [
       "Rhodey jatuh di taman dan mengatakan Jojo mendorongnya. Rhodey terluka dan menangis, sementara Jojo terlihat terkejut karena dituduh. Adegan ini meminta pemain menangani luka, emosi, dan keadilan sekaligus."
     ),
     hints: [
-      localized("When two children are involved, listening to both sides prevents unfair blame.", "Saat ada dua anak terlibat, mendengarkan kedua sisi membantu mencegah tuduhan yang tidak adil."),
-      localized("Physical care matters, but emotional safety still affects whether the child feels helped.", "Perawatan fisik penting, tetapi rasa aman emosional tetap memengaruhi apakah anak merasa terbantu."),
-      localized("A quick distraction may stop tears briefly without resolving the injury or the misunderstanding.", "Distraksi cepat mungkin menghentikan tangisan sebentar tanpa menyelesaikan luka atau kesalahpahaman.")
+      localized("When two children are involved, emotional safety and fairness need to move together.", "Saat ada dua anak terlibat, rasa aman emosional dan keadilan perlu berjalan bersama.")
     ],
     background: backgrounds.playground,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },

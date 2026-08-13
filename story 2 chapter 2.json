@@ -11,16 +11,8 @@
   },
   "hints": [
     {
-      "en": "Ask for the reason before pushing children toward repair.",
-      "id": "Tanyakan alasannya sebelum mendorong anak untuk memperbaiki hubungan."
-    },
-    {
-      "en": "A calm approach can lower the threat level for both children.",
-      "id": "Pendekatan tenang bisa menurunkan rasa terancam pada kedua anak."
-    },
-    {
-      "en": "An apology feels clearer after both children understand what happened.",
-      "id": "Permintaan maaf terasa lebih jelas setelah kedua anak memahami yang terjadi."
+      "en": "Children can repair a conflict more naturally after the situation feels understood.",
+      "id": "Anak bisa memperbaiki konflik dengan lebih alami setelah situasinya terasa dipahami."
     }
   ],
   "initialState": "CONFLICT",

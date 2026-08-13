@@ -13,14 +13,6 @@
     {
       "en": "Validation starts by making the child feel safe enough to speak.",
       "id": "Validasi dimulai dari membuat anak merasa cukup aman untuk bicara."
-    },
-    {
-      "en": "Open questions help children name feelings instead of defending themselves.",
-      "id": "Pertanyaan terbuka membantu anak menyebutkan perasaan, bukan langsung membela diri."
-    },
-    {
-      "en": "Blame can turn a feeling problem into a bigger conflict.",
-      "id": "Menyalahkan bisa mengubah masalah perasaan menjadi konflik yang lebih besar."
     }
   ],
   "initialState": "HURT",

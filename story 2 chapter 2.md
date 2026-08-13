@@ -14,9 +14,7 @@ Rhodey blocks the slide and does not want Jojo to join. From the outside it look
 
 ### Hints
 
-- Ask for the reason before pushing children toward repair.
-- A calm approach can lower the threat level for both children.
-- An apology feels clearer after both children understand what happened.
+- Children can repair a conflict more naturally after the situation feels understood.
 
 ### Grid & Choice Slot Breakdown
 

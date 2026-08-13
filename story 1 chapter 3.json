@@ -13,14 +13,6 @@
     {
       "en": "A distressed child may need calm presence before they can explain what happened.",
       "id": "Anak yang sangat sedih mungkin butuh kehadiran tenang sebelum bisa menjelaskan yang terjadi."
-    },
-    {
-      "en": "Problem solving lands better after the child feels heard.",
-      "id": "Solusi biasanya lebih diterima setelah anak merasa didengarkan."
-    },
-    {
-      "en": "A treat can distract from the feeling without repairing the actual problem.",
-      "id": "Hadiah makanan bisa mengalihkan perasaan tanpa memperbaiki masalah sebenarnya."
     }
   ],
   "initialState": "CRYING",

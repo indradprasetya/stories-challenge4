@@ -15,8 +15,6 @@ Jojo is full of energy during drawing time and his noise makes it hard for Rhode
 ### Hints
 
 - Children often need attention before they can process an instruction.
-- A firm correction before connection can make a child defensive.
-- An activity item works best when the child is already regulated enough to use it.
 
 ### Grid & Choice Slot Breakdown
 

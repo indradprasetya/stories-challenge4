@@ -108,7 +108,7 @@ for (const page of chapterPages) {
   assert.match(markdown, new RegExp(`\\*\\*Possibility formula:\\*\\* ${possibilityFactors} = ${expectedCount} outcomes \\(${story.actions.length} actions across ${story.choiceCount} slots\\)`), `${page.slug} must explain its possibility formula`);
   localized(story.title, `${page.slug} title`);
   localized(story.description, `${page.slug} description`);
-  assert.ok(Array.isArray(story.hints) && story.hints.length >= 2, `${page.slug} must include localized hints`);
+  assert.ok(Array.isArray(story.hints) && story.hints.length === 1, `${page.slug} must include exactly one subtle localized hint`);
   for (const [index, hint] of story.hints.entries()) {
     localized(hint, `${page.slug} hint ${index + 1}`);
   }

@@ -15,8 +15,6 @@ Rhodey is sitting in the classroom but does not feel ready to draw. He is close 
 ### Hints
 
 - A child may join an activity more easily after feeling noticed and accompanied.
-- Giving a tool too early can feel like pressure, even when the tool is useful.
-- A toy can change the mood, but it may also pull attention away from the learning goal.
 
 ### Grid & Choice Slot Breakdown
 

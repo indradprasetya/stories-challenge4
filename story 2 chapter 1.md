@@ -15,8 +15,6 @@ Jojo feels hurt in the playground after Rhodey says something unkind. The confli
 ### Hints
 
 - Validation starts by making the child feel safe enough to speak.
-- Open questions help children name feelings instead of defending themselves.
-- Blame can turn a feeling problem into a bigger conflict.
 
 ### Grid & Choice Slot Breakdown
 
