@@ -31,10 +31,10 @@ const actions = {
     name: localized("Ask to Be Quiet", "Minta Tenang"),
     direction: "A gentle quiet gesture with one finger near the mouth and a relaxed expression."
   },
-  scold: {
-    id: "action_scold",
-    name: localized("Scold", "Marahi"),
-    direction: "A tense pointing gesture and raised voice marks showing an unhelpful reprimand."
+  lecture: {
+    id: "action_lecture",
+    name: localized("Lecture", "Tegur"),
+    direction: "A firm but calm corrective gesture, without yelling or intimidating body language."
   },
   asking: {
     id: "action_asking",
@@ -272,7 +272,7 @@ const storySpecs = [
     ),
     background: backgrounds.classroom,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
-    actions: [actions.askQuiet, actions.scold, actions.attentionReset, actions.crayon],
+    actions: [actions.askQuiet, actions.lecture, actions.attentionReset, actions.crayon],
     gridCount: 4,
     initialState: "noisy",
     ideal: [[actions.attentionReset.id], [actions.askQuiet.id], [actions.crayon.id]],
@@ -304,20 +304,20 @@ const storySpecs = [
         ["rhodey", expression("rhodey_distracted", "Rhodey remains distracted from drawing.")]
       ), bubble("jojo", "Look at this instead!", "Lihat ini saja!")),
       upset: scene(cast(
-        ["jojo", expression("jojo_upset", "Jojo looks hurt and defensive after being scolded.")],
-        ["rhodey", expression("rhodey_uncomfortable", "Rhodey looks uncomfortable during the reprimand.")]
+        ["jojo", expression("jojo_upset", "Jojo looks hurt and defensive after being corrected too early.")],
+        ["rhodey", expression("rhodey_uncomfortable", "Rhodey looks uncomfortable during the tense correction.")]
       ), bubble("jojo", "Don't yell at me!", "Jangan bentak aku!"))
     },
     transition(state, selected) {
       const actionID = selected[0];
       const matrix = {
-        noisy: { action_attention_reset: "attentive", action_ask_quiet: "resistant", action_crayon: "distracted", action_scold: "upset" },
-        attentive: { action_attention_reset: "attentive", action_ask_quiet: "calm", action_crayon: "drawing", action_scold: "upset" },
-        calm: { action_attention_reset: "attentive", action_ask_quiet: "calm", action_crayon: "drawing", action_scold: "upset" },
-        resistant: { action_attention_reset: "attentive", action_ask_quiet: "resistant", action_crayon: "distracted", action_scold: "upset" },
-        distracted: { action_attention_reset: "attentive", action_ask_quiet: "resistant", action_crayon: "distracted", action_scold: "upset" },
-        upset: { action_attention_reset: "attentive", action_ask_quiet: "resistant", action_crayon: "distracted", action_scold: "upset" },
-        drawing: { action_attention_reset: "drawing", action_ask_quiet: "drawing", action_crayon: "drawing", action_scold: "upset" }
+        noisy: { action_attention_reset: "attentive", action_ask_quiet: "resistant", action_crayon: "distracted", action_lecture: "upset" },
+        attentive: { action_attention_reset: "attentive", action_ask_quiet: "calm", action_crayon: "drawing", action_lecture: "upset" },
+        calm: { action_attention_reset: "attentive", action_ask_quiet: "calm", action_crayon: "drawing", action_lecture: "upset" },
+        resistant: { action_attention_reset: "attentive", action_ask_quiet: "resistant", action_crayon: "distracted", action_lecture: "upset" },
+        distracted: { action_attention_reset: "attentive", action_ask_quiet: "resistant", action_crayon: "distracted", action_lecture: "upset" },
+        upset: { action_attention_reset: "attentive", action_ask_quiet: "resistant", action_crayon: "distracted", action_lecture: "upset" },
+        drawing: { action_attention_reset: "drawing", action_ask_quiet: "drawing", action_crayon: "drawing", action_lecture: "upset" }
       };
       return matrix[state][actionID];
     },
@@ -325,7 +325,7 @@ const storySpecs = [
     A["Noisy and distracting"] -->|"Attention Reset"| B["Attentive"]
     B -->|"Ask to Be Quiet"| C["Calm"]
     C -->|"Crayon"| D["Drawing - Success"]
-    A -->|"Scold"| E["Upset - Retry"]
+    A -->|"Lecture too early"| E["Upset - Retry"]
     A -->|"Crayon too early"| F["Distracted"]`
   }),
   chapter({

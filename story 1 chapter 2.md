@@ -25,7 +25,7 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 ### Actions
 
 - Ask to Be Quiet / Minta Tenang
-- Scold / Marahi
+- Lecture / Tegur
 - Attention Reset / Atur Ulang Perhatian
 - Crayon / Krayon
 
@@ -38,7 +38,7 @@ flowchart LR
     A["Noisy and distracting"] -->|"Attention Reset"| B["Attentive"]
     B -->|"Ask to Be Quiet"| C["Calm"]
     C -->|"Crayon"| D["Drawing - Success"]
-    A -->|"Scold"| E["Upset - Retry"]
+    A -->|"Lecture too early"| E["Upset - Retry"]
     A -->|"Crayon too early"| F["Distracted"]
 ```
 
@@ -70,7 +70,7 @@ flowchart LR
 | Asset ID | Visual Direction |
 | --- | --- |
 | `action_ask_quiet` | A gentle quiet gesture with one finger near the mouth and a relaxed expression. |
-| `action_scold` | A tense pointing gesture and raised voice marks showing an unhelpful reprimand. |
+| `action_lecture` | A firm but calm corrective gesture, without yelling or intimidating body language. |
 | `action_attention_reset` | Two hands clapping once to regain attention without intimidating the child. |
 | `action_crayon` | One clearly recognizable drawing crayon with a simple silhouette. |
 

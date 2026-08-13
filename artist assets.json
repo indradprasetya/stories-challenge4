@@ -92,6 +92,15 @@
       "reuseCount": 1
     },
     {
+      "id": "action_lecture",
+      "type": "action",
+      "visualDirection": "A firm but calm corrective gesture, without yelling or intimidating body language.",
+      "usedIn": [
+        "story-1-chapter-2"
+      ],
+      "reuseCount": 1
+    },
+    {
       "id": "action_lollipop",
       "type": "action",
       "visualDirection": "A round, colorful lollipop on a short stick.",
@@ -106,15 +115,6 @@
       "visualDirection": "A clean replacement sheet of drawing paper.",
       "usedIn": [
         "story-1-chapter-3"
-      ],
-      "reuseCount": 1
-    },
-    {
-      "id": "action_scold",
-      "type": "action",
-      "visualDirection": "A tense pointing gesture and raised voice marks showing an unhelpful reprimand.",
-      "usedIn": [
-        "story-1-chapter-2"
       ],
       "reuseCount": 1
     },

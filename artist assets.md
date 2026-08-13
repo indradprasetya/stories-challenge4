@@ -17,9 +17,9 @@ The character workload is intentionally limited to **19 general expressions** an
 | `action_candy` | 1 | story-1-chapter-3 | A small wrapped candy with a distinct silhouette. |
 | `action_crayon` | 2 | story-1-chapter-1, story-1-chapter-2 | One clearly recognizable drawing crayon with a simple silhouette. |
 | `action_give_bandage` | 1 | story-2-chapter-3 | A clean adhesive bandage held ready for first aid. |
+| `action_lecture` | 1 | story-1-chapter-2 | A firm but calm corrective gesture, without yelling or intimidating body language. |
 | `action_lollipop` | 1 | story-2-chapter-3 | A round, colorful lollipop on a short stick. |
 | `action_paper` | 1 | story-1-chapter-3 | A clean replacement sheet of drawing paper. |
-| `action_scold` | 1 | story-1-chapter-2 | A tense pointing gesture and raised voice marks showing an unhelpful reprimand. |
 | `action_toy` | 2 | story-1-chapter-1, story-2-chapter-2 | A small, friendly cat toy that reads clearly at card size. |
 
 ## General Character Expressions (19 unique drawings)
