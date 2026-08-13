@@ -5,9 +5,18 @@
 > Characters: Jojo, Rhodey  
 > Grid: 4  
 > Choice Slots: 3  
+> Actions: 4  
 > Possibilities: 64
 
-**Synopsis**: Rhodey refuses to share the slide with Jojo. Ask why, approach calmly, then help both children apologize.
+### Description
+
+Rhodey blocks the slide and does not want Jojo to join. From the outside it looks like selfish behavior, but the reason may be fear, discomfort, or a misunderstanding about safety.
+
+### Hints
+
+- Ask for the reason before pushing children toward repair.
+- A calm approach can lower the threat level for both children.
+- An apology feels clearer after both children understand what happened.
 
 ### Grid & Choice Slot Breakdown
 
@@ -29,9 +38,7 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 - Approach / Dekati
 - Apologize / Minta Maaf
 
-### Ideal Path
-
-Ask → Approach → Apologize
+### Developer Mermaid
 
 ```mermaid
 flowchart LR

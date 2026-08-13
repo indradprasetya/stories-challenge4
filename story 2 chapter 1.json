@@ -6,9 +6,23 @@
     "id": "Validasi Perasaan Jojo"
   },
   "description": {
-    "en": "Jojo is upset after Rhodey calls him a hurtful name. Approach Jojo, then ask and listen to how he feels.",
-    "id": "Jojo kesal setelah Rhodey mengejeknya. Dekati Jojo, lalu tanyakan dan dengarkan perasaannya."
+    "en": "Jojo feels hurt in the playground after Rhodey says something unkind. The conflict is still small, but Jojo needs his feelings to be taken seriously before he can move on.",
+    "id": "Jojo merasa sakit hati di taman setelah Rhodey mengatakan sesuatu yang tidak baik. Konfliknya masih kecil, tetapi Jojo perlu merasa perasaannya dianggap serius sebelum bisa lanjut bermain."
   },
+  "hints": [
+    {
+      "en": "Validation starts by making the child feel safe enough to speak.",
+      "id": "Validasi dimulai dari membuat anak merasa cukup aman untuk bicara."
+    },
+    {
+      "en": "Open questions help children name feelings instead of defending themselves.",
+      "id": "Pertanyaan terbuka membantu anak menyebutkan perasaan, bukan langsung membela diri."
+    },
+    {
+      "en": "Blame can turn a feeling problem into a bigger conflict.",
+      "id": "Menyalahkan bisa mengubah masalah perasaan menjadi konflik yang lebih besar."
+    }
+  ],
   "initialState": "HURT",
   "gridCount": 3,
   "choiceCount": 2,

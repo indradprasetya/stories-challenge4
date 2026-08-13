@@ -6,9 +6,23 @@
     "id": "Bantu Rhodey Berbagi Perosotan"
   },
   "description": {
-    "en": "Rhodey refuses to share the slide with Jojo. Ask why, approach calmly, then help both children apologize.",
-    "id": "Rhodey tidak mau berbagi perosotan dengan Jojo. Tanyakan alasannya, dekati dengan tenang, lalu bantu keduanya saling meminta maaf."
+    "en": "Rhodey blocks the slide and does not want Jojo to join. From the outside it looks like selfish behavior, but the reason may be fear, discomfort, or a misunderstanding about safety.",
+    "id": "Rhodey menghalangi perosotan dan tidak mau Jojo ikut bermain. Dari luar terlihat seperti egois, tetapi alasannya bisa berupa takut, tidak nyaman, atau salah paham tentang rasa aman."
   },
+  "hints": [
+    {
+      "en": "Ask for the reason before pushing children toward repair.",
+      "id": "Tanyakan alasannya sebelum mendorong anak untuk memperbaiki hubungan."
+    },
+    {
+      "en": "A calm approach can lower the threat level for both children.",
+      "id": "Pendekatan tenang bisa menurunkan rasa terancam pada kedua anak."
+    },
+    {
+      "en": "An apology feels clearer after both children understand what happened.",
+      "id": "Permintaan maaf terasa lebih jelas setelah kedua anak memahami yang terjadi."
+    }
+  ],
   "initialState": "CONFLICT",
   "gridCount": 4,
   "choiceCount": 3,

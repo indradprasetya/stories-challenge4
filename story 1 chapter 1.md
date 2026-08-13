@@ -5,9 +5,18 @@
 > Character: Rhodey  
 > Grid: 3  
 > Choice Slots: 2  
+> Actions: 3  
 > Possibilities: 9
 
-**Synopsis**: Rhodey does not want to draw. Approach first so he feels noticed, then offer a crayon.
+### Description
+
+Rhodey is sitting in the classroom but does not feel ready to draw. He is close to the activity, yet his body language shows that he needs emotional safety before he can enjoy the drawing materials.
+
+### Hints
+
+- A child may join an activity more easily after feeling noticed and accompanied.
+- Giving a tool too early can feel like pressure, even when the tool is useful.
+- A toy can change the mood, but it may also pull attention away from the learning goal.
 
 ### Grid & Choice Slot Breakdown
 
@@ -27,9 +36,7 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 - Crayon / Krayon
 - Toy / Mainan
 
-### Ideal Path
-
-Approach → Crayon
+### Developer Mermaid
 
 ```mermaid
 flowchart LR

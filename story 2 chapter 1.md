@@ -5,9 +5,18 @@
 > Characters: Jojo, Rhodey  
 > Grid: 3  
 > Choice Slots: 2  
+> Actions: 3  
 > Possibilities: 9
 
-**Synopsis**: Jojo is upset after Rhodey calls him a hurtful name. Approach Jojo, then ask and listen to how he feels.
+### Description
+
+Jojo feels hurt in the playground after Rhodey says something unkind. The conflict is still small, but Jojo needs his feelings to be taken seriously before he can move on.
+
+### Hints
+
+- Validation starts by making the child feel safe enough to speak.
+- Open questions help children name feelings instead of defending themselves.
+- Blame can turn a feeling problem into a bigger conflict.
 
 ### Grid & Choice Slot Breakdown
 
@@ -27,9 +36,7 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 - Blame / Menyalahkan
 - Approach / Dekati
 
-### Ideal Path
-
-Approach → Ask
+### Developer Mermaid
 
 ```mermaid
 flowchart LR

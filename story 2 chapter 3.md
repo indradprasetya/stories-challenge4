@@ -5,9 +5,18 @@
 > Characters: Jojo, Rhodey  
 > Grid: 4  
 > Choice Slots: 4  
+> Actions: 5  
 > Possibilities: 625
 
-**Synopsis**: Rhodey falls and says Jojo pushed him. Ask both children, learn that the fall was accidental, approach calmly, then give Rhodey a bandage.
+### Description
+
+Rhodey falls in the playground and says Jojo pushed him. Rhodey is hurt and crying, while Jojo looks shocked by the accusation. The scene asks the player to handle injury, emotion, and fairness at the same time.
+
+### Hints
+
+- When two children are involved, listening to both sides prevents unfair blame.
+- Physical care matters, but emotional safety still affects whether the child feels helped.
+- A quick distraction may stop tears briefly without resolving the injury or the misunderstanding.
 
 ### Grid & Choice Slot Breakdown
 
@@ -30,9 +39,7 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 - Lollipop / Permen Lolipop
 - Approach / Dekati
 
-### Ideal Path
-
-Ask + Ask → Approach → Give Bandage
+### Developer Mermaid
 
 ```mermaid
 flowchart LR

@@ -6,9 +6,23 @@
     "id": "Dengarkan Sebelum Membantu Rhodey"
   },
   "description": {
-    "en": "Rhodey falls and says Jojo pushed him. Ask both children, learn that the fall was accidental, approach calmly, then give Rhodey a bandage.",
-    "id": "Rhodey jatuh dan mengatakan Jojo mendorongnya. Tanyakan kepada keduanya, ketahui bahwa ia jatuh tanpa sengaja, dekati dengan tenang, lalu berikan plester kepada Rhodey."
+    "en": "Rhodey falls in the playground and says Jojo pushed him. Rhodey is hurt and crying, while Jojo looks shocked by the accusation. The scene asks the player to handle injury, emotion, and fairness at the same time.",
+    "id": "Rhodey jatuh di taman dan mengatakan Jojo mendorongnya. Rhodey terluka dan menangis, sementara Jojo terlihat terkejut karena dituduh. Adegan ini meminta pemain menangani luka, emosi, dan keadilan sekaligus."
   },
+  "hints": [
+    {
+      "en": "When two children are involved, listening to both sides prevents unfair blame.",
+      "id": "Saat ada dua anak terlibat, mendengarkan kedua sisi membantu mencegah tuduhan yang tidak adil."
+    },
+    {
+      "en": "Physical care matters, but emotional safety still affects whether the child feels helped.",
+      "id": "Perawatan fisik penting, tetapi rasa aman emosional tetap memengaruhi apakah anak merasa terbantu."
+    },
+    {
+      "en": "A quick distraction may stop tears briefly without resolving the injury or the misunderstanding.",
+      "id": "Distraksi cepat mungkin menghentikan tangisan sebentar tanpa menyelesaikan luka atau kesalahpahaman."
+    }
+  ],
   "initialState": "ACCUSATION",
   "gridCount": 4,
   "choiceCount": 4,

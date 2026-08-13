@@ -5,9 +5,18 @@
 > Character: Rhodey  
 > Grid: 4  
 > Choice Slots: 3  
+> Actions: 4  
 > Possibilities: 64
 
-**Synopsis**: Rhodey's drawing paper tears and he cries. Approach, ask what happened, then give him replacement paper.
+### Description
+
+Rhodey's drawing paper tears during class and the broken drawing feels important to him. He is upset not only because the paper is damaged, but because the work he cared about suddenly feels lost.
+
+### Hints
+
+- A distressed child may need calm presence before they can explain what happened.
+- Problem solving lands better after the child feels heard.
+- A treat can distract from the feeling without repairing the actual problem.
 
 ### Grid & Choice Slot Breakdown
 
@@ -29,9 +38,7 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 - Candy / Permen
 - Paper / Kertas
 
-### Ideal Path
-
-Approach → Ask → Paper
+### Developer Mermaid
 
 ```mermaid
 flowchart LR

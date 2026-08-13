@@ -6,9 +6,23 @@
     "id": "Membuat Rhodey Mau Menggambar"
   },
   "description": {
-    "en": "Rhodey does not want to draw. Approach first so he feels noticed, then offer a crayon.",
-    "id": "Rhodey belum mau menggambar. Dekati dia terlebih dahulu agar merasa diperhatikan, lalu tawarkan krayon."
+    "en": "Rhodey is sitting in the classroom but does not feel ready to draw. He is close to the activity, yet his body language shows that he needs emotional safety before he can enjoy the drawing materials.",
+    "id": "Rhodey duduk di kelas tetapi belum merasa siap untuk menggambar. Ia dekat dengan aktivitasnya, tetapi bahasa tubuhnya menunjukkan bahwa ia butuh rasa aman sebelum bisa menikmati alat gambar."
   },
+  "hints": [
+    {
+      "en": "A child may join an activity more easily after feeling noticed and accompanied.",
+      "id": "Anak sering lebih mudah ikut aktivitas setelah merasa diperhatikan dan ditemani."
+    },
+    {
+      "en": "Giving a tool too early can feel like pressure, even when the tool is useful.",
+      "id": "Memberikan alat terlalu cepat bisa terasa seperti tekanan, meskipun alatnya berguna."
+    },
+    {
+      "en": "A toy can change the mood, but it may also pull attention away from the learning goal.",
+      "id": "Mainan bisa mengubah suasana, tetapi juga bisa mengalihkan perhatian dari tujuan belajar."
+    }
+  ],
   "initialState": "REFUSING",
   "gridCount": 3,
   "choiceCount": 2,

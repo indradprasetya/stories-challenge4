@@ -96,12 +96,22 @@ for (const page of chapterPages) {
   assert.equal(story.outcomes.length, expectedCount, `${page.slug} outcome count mismatch`);
   assert.match(markdown, new RegExp(`Possibilities:\\s*${expectedCount}`), `${page.slug} must document its possibility count`);
   assert.match(markdown, new RegExp(`Choice Slots:\\s*${story.choiceCount}`), `${page.slug} must document its choice slot count`);
+  assert.match(markdown, new RegExp(`Actions:\\s*${story.actions.length}`), `${page.slug} must document its action count`);
   assert.doesNotMatch(markdown, /^> Story:/m, `${page.slug} overview must not repeat its story number`);
+  assert.match(markdown, /### Description/, `${page.slug} must explain the story context`);
+  assert.match(markdown, /### Hints/, `${page.slug} must include theory-style hints`);
+  assert.doesNotMatch(markdown, /### Ideal Path/, `${page.slug} must not show the answer path`);
+  assert.match(markdown, /### Developer Mermaid/, `${page.slug} must keep a developer diagram`);
+  assert.match(markdown, /```mermaid/, `${page.slug} must keep a Mermaid diagram`);
   assert.match(markdown, /### Grid & Choice Slot Breakdown/, `${page.slug} must explain its grid and choice slots`);
   const possibilityFactors = Array(story.choiceCount).fill(story.actions.length).join(" × ");
   assert.match(markdown, new RegExp(`\\*\\*Possibility formula:\\*\\* ${possibilityFactors} = ${expectedCount} outcomes \\(${story.actions.length} actions across ${story.choiceCount} slots\\)`), `${page.slug} must explain its possibility formula`);
   localized(story.title, `${page.slug} title`);
   localized(story.description, `${page.slug} description`);
+  assert.ok(Array.isArray(story.hints) && story.hints.length >= 2, `${page.slug} must include localized hints`);
+  for (const [index, hint] of story.hints.entries()) {
+    localized(hint, `${page.slug} hint ${index + 1}`);
+  }
 
   const actionIDs = new Set();
   for (const action of story.actions) {

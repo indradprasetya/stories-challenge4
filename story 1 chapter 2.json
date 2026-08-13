@@ -6,9 +6,23 @@
     "id": "Bantu Jojo Tenang dan Menggambar"
   },
   "description": {
-    "en": "Jojo is noisy and distracts Rhodey. Reset his attention, ask him to be quiet, then offer a crayon.",
-    "id": "Jojo berisik dan mengganggu Rhodey. Atur ulang perhatiannya, minta dia tenang, lalu tawarkan krayon."
+    "en": "Jojo is full of energy during drawing time and his noise makes it hard for Rhodey to focus. The scene is about helping Jojo shift from active play into a calmer classroom activity.",
+    "id": "Jojo sangat berenergi saat waktunya menggambar dan suaranya membuat Rhodey sulit fokus. Adegan ini tentang membantu Jojo berpindah dari bermain aktif ke aktivitas kelas yang lebih tenang."
   },
+  "hints": [
+    {
+      "en": "Children often need attention before they can process an instruction.",
+      "id": "Anak sering perlu diarahkan perhatiannya sebelum bisa memproses instruksi."
+    },
+    {
+      "en": "A firm correction before connection can make a child defensive.",
+      "id": "Teguran sebelum anak merasa terhubung bisa membuat anak defensif."
+    },
+    {
+      "en": "An activity item works best when the child is already regulated enough to use it.",
+      "id": "Item aktivitas paling efektif saat anak sudah cukup tenang untuk menggunakannya."
+    }
+  ],
   "initialState": "NOISY",
   "gridCount": 4,
   "choiceCount": 3,

@@ -223,9 +223,14 @@ const storySpecs = [
     id: "rhodey_wants_to_draw",
     title: localized("Make Rhodey Want to Draw", "Membuat Rhodey Mau Menggambar"),
     description: localized(
-      "Rhodey does not want to draw. Approach first so he feels noticed, then offer a crayon.",
-      "Rhodey belum mau menggambar. Dekati dia terlebih dahulu agar merasa diperhatikan, lalu tawarkan krayon."
+      "Rhodey is sitting in the classroom but does not feel ready to draw. He is close to the activity, yet his body language shows that he needs emotional safety before he can enjoy the drawing materials.",
+      "Rhodey duduk di kelas tetapi belum merasa siap untuk menggambar. Ia dekat dengan aktivitasnya, tetapi bahasa tubuhnya menunjukkan bahwa ia butuh rasa aman sebelum bisa menikmati alat gambar."
     ),
+    hints: [
+      localized("A child may join an activity more easily after feeling noticed and accompanied.", "Anak sering lebih mudah ikut aktivitas setelah merasa diperhatikan dan ditemani."),
+      localized("Giving a tool too early can feel like pressure, even when the tool is useful.", "Memberikan alat terlalu cepat bisa terasa seperti tekanan, meskipun alatnya berguna."),
+      localized("A toy can change the mood, but it may also pull attention away from the learning goal.", "Mainan bisa mengubah suasana, tetapi juga bisa mengalihkan perhatian dari tujuan belajar.")
+    ],
     background: backgrounds.classroom,
     characterNames: { rhodey: "Rhodey" },
     actions: [actions.approach, actions.crayon, actions.toy],
@@ -267,9 +272,14 @@ const storySpecs = [
     id: "jojo_settles_down_to_draw",
     title: localized("Help Jojo Settle Down and Draw", "Bantu Jojo Tenang dan Menggambar"),
     description: localized(
-      "Jojo is noisy and distracts Rhodey. Reset his attention, ask him to be quiet, then offer a crayon.",
-      "Jojo berisik dan mengganggu Rhodey. Atur ulang perhatiannya, minta dia tenang, lalu tawarkan krayon."
+      "Jojo is full of energy during drawing time and his noise makes it hard for Rhodey to focus. The scene is about helping Jojo shift from active play into a calmer classroom activity.",
+      "Jojo sangat berenergi saat waktunya menggambar dan suaranya membuat Rhodey sulit fokus. Adegan ini tentang membantu Jojo berpindah dari bermain aktif ke aktivitas kelas yang lebih tenang."
     ),
+    hints: [
+      localized("Children often need attention before they can process an instruction.", "Anak sering perlu diarahkan perhatiannya sebelum bisa memproses instruksi."),
+      localized("A firm correction before connection can make a child defensive.", "Teguran sebelum anak merasa terhubung bisa membuat anak defensif."),
+      localized("An activity item works best when the child is already regulated enough to use it.", "Item aktivitas paling efektif saat anak sudah cukup tenang untuk menggunakannya.")
+    ],
     background: backgrounds.classroom,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
     actions: [actions.askQuiet, actions.lecture, actions.attentionReset, actions.crayon],
@@ -334,9 +344,14 @@ const storySpecs = [
     id: "rhodey_torn_paper",
     title: localized("Help Rhodey After His Paper Tears", "Bantu Rhodey Setelah Kertasnya Robek"),
     description: localized(
-      "Rhodey's drawing paper tears and he cries. Approach, ask what happened, then give him replacement paper.",
-      "Kertas gambar Rhodey robek dan ia menangis. Dekati, tanyakan yang terjadi, lalu berikan kertas pengganti."
+      "Rhodey's drawing paper tears during class and the broken drawing feels important to him. He is upset not only because the paper is damaged, but because the work he cared about suddenly feels lost.",
+      "Kertas gambar Rhodey robek saat di kelas dan gambar itu terasa penting baginya. Ia kesal bukan hanya karena kertasnya rusak, tetapi karena karya yang ia pedulikan terasa hilang tiba-tiba."
     ),
+    hints: [
+      localized("A distressed child may need calm presence before they can explain what happened.", "Anak yang sangat sedih mungkin butuh kehadiran tenang sebelum bisa menjelaskan yang terjadi."),
+      localized("Problem solving lands better after the child feels heard.", "Solusi biasanya lebih diterima setelah anak merasa didengarkan."),
+      localized("A treat can distract from the feeling without repairing the actual problem.", "Hadiah makanan bisa mengalihkan perasaan tanpa memperbaiki masalah sebenarnya.")
+    ],
     background: backgrounds.classroom,
     characterNames: { rhodey: "Rhodey" },
     actions: [actions.approach, actions.asking, actions.candy, actions.paper],
@@ -384,9 +399,14 @@ const storySpecs = [
     id: "validate_jojo_feelings",
     title: localized("Validate Jojo's Feelings", "Validasi Perasaan Jojo"),
     description: localized(
-      "Jojo is upset after Rhodey calls him a hurtful name. Approach Jojo, then ask and listen to how he feels.",
-      "Jojo kesal setelah Rhodey mengejeknya. Dekati Jojo, lalu tanyakan dan dengarkan perasaannya."
+      "Jojo feels hurt in the playground after Rhodey says something unkind. The conflict is still small, but Jojo needs his feelings to be taken seriously before he can move on.",
+      "Jojo merasa sakit hati di taman setelah Rhodey mengatakan sesuatu yang tidak baik. Konfliknya masih kecil, tetapi Jojo perlu merasa perasaannya dianggap serius sebelum bisa lanjut bermain."
     ),
+    hints: [
+      localized("Validation starts by making the child feel safe enough to speak.", "Validasi dimulai dari membuat anak merasa cukup aman untuk bicara."),
+      localized("Open questions help children name feelings instead of defending themselves.", "Pertanyaan terbuka membantu anak menyebutkan perasaan, bukan langsung membela diri."),
+      localized("Blame can turn a feeling problem into a bigger conflict.", "Menyalahkan bisa mengubah masalah perasaan menjadi konflik yang lebih besar.")
+    ],
     background: backgrounds.playground,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
     actions: [actions.asking, actions.blaming, actions.approach],
@@ -441,9 +461,14 @@ const storySpecs = [
     id: "share_the_slide",
     title: localized("Help Rhodey Share the Slide", "Bantu Rhodey Berbagi Perosotan"),
     description: localized(
-      "Rhodey refuses to share the slide with Jojo. Ask why, approach calmly, then help both children apologize.",
-      "Rhodey tidak mau berbagi perosotan dengan Jojo. Tanyakan alasannya, dekati dengan tenang, lalu bantu keduanya saling meminta maaf."
+      "Rhodey blocks the slide and does not want Jojo to join. From the outside it looks like selfish behavior, but the reason may be fear, discomfort, or a misunderstanding about safety.",
+      "Rhodey menghalangi perosotan dan tidak mau Jojo ikut bermain. Dari luar terlihat seperti egois, tetapi alasannya bisa berupa takut, tidak nyaman, atau salah paham tentang rasa aman."
     ),
+    hints: [
+      localized("Ask for the reason before pushing children toward repair.", "Tanyakan alasannya sebelum mendorong anak untuk memperbaiki hubungan."),
+      localized("A calm approach can lower the threat level for both children.", "Pendekatan tenang bisa menurunkan rasa terancam pada kedua anak."),
+      localized("An apology feels clearer after both children understand what happened.", "Permintaan maaf terasa lebih jelas setelah kedua anak memahami yang terjadi.")
+    ],
     background: backgrounds.playground,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
     actions: [actions.asking, actions.toy, actions.approach, actions.apologize],
@@ -508,9 +533,14 @@ const storySpecs = [
     id: "listen_before_helping_rhodey",
     title: localized("Listen Before Helping Rhodey", "Dengarkan Sebelum Membantu Rhodey"),
     description: localized(
-      "Rhodey falls and says Jojo pushed him. Ask both children, learn that the fall was accidental, approach calmly, then give Rhodey a bandage.",
-      "Rhodey jatuh dan mengatakan Jojo mendorongnya. Tanyakan kepada keduanya, ketahui bahwa ia jatuh tanpa sengaja, dekati dengan tenang, lalu berikan plester kepada Rhodey."
+      "Rhodey falls in the playground and says Jojo pushed him. Rhodey is hurt and crying, while Jojo looks shocked by the accusation. The scene asks the player to handle injury, emotion, and fairness at the same time.",
+      "Rhodey jatuh di taman dan mengatakan Jojo mendorongnya. Rhodey terluka dan menangis, sementara Jojo terlihat terkejut karena dituduh. Adegan ini meminta pemain menangani luka, emosi, dan keadilan sekaligus."
     ),
+    hints: [
+      localized("When two children are involved, listening to both sides prevents unfair blame.", "Saat ada dua anak terlibat, mendengarkan kedua sisi membantu mencegah tuduhan yang tidak adil."),
+      localized("Physical care matters, but emotional safety still affects whether the child feels helped.", "Perawatan fisik penting, tetapi rasa aman emosional tetap memengaruhi apakah anak merasa terbantu."),
+      localized("A quick distraction may stop tears briefly without resolving the injury or the misunderstanding.", "Distraksi cepat mungkin menghentikan tangisan sebentar tanpa menyelesaikan luka atau kesalahpahaman.")
+    ],
     background: backgrounds.playground,
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
     actions: [actions.asking, actions.blaming, actions.giveBandage, actions.lollipop, actions.approach],
@@ -716,6 +746,7 @@ function buildStory(spec) {
     id: spec.id,
     title: spec.title,
     description: spec.description,
+    hints: spec.hints,
     initialState: spec.initialState.replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase(),
     gridCount: spec.gridCount,
     choiceCount: grids.reduce((sum, grid) => sum + grid.dropSlots.length, 0),
@@ -732,9 +763,7 @@ function buildStory(spec) {
 
 function markdownFor(spec, story) {
   const actionList = spec.actions.map(action => `- ${action.name.en} / ${action.name.id}`).join("\n");
-  const idealPath = spec.ideal
-    .map(step => step.map(actionID => spec.actions.find(action => action.id === actionID).name.en).join(" + "))
-    .join(" → ");
+  const hintList = spec.hints.map(hint => `- ${hint.en}`).join("\n");
   const usedVisualIDs = new Set(story.outcomes.flatMap(outcome => outcome.states.flatMap(state => state.visualSlots.map(slot => slot.assetID))));
   const expressionAssets = [...usedVisualIDs].map(id => generalExpressions.get(id)).filter(Boolean).sort((left, right) => left.id.localeCompare(right.id));
   const poseAssets = [...usedVisualIDs].map(id => uniquePoses.get(id)).filter(Boolean).sort((left, right) => left.id.localeCompare(right.id));
@@ -769,9 +798,16 @@ function markdownFor(spec, story) {
 > Character${Object.keys(spec.characterNames).length > 1 ? "s" : ""}: ${characterNames}  
 > Grid: ${spec.gridCount}  
 > Choice Slots: ${story.choiceCount}  
+> Actions: ${story.actions.length}  
 > Possibilities: ${story.outcomes.length}
 
-**Synopsis**: ${spec.description.en}
+### Description
+
+${spec.description.en}
+
+### Hints
+
+${hintList}
 
 ### Grid & Choice Slot Breakdown
 
@@ -787,9 +823,7 @@ ${gridRows}
 
 ${actionList}
 
-### Ideal Path
-
-${idealPath}
+### Developer Mermaid
 
 \`\`\`mermaid
 ${spec.mermaid}

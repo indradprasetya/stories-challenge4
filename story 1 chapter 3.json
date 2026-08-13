@@ -6,9 +6,23 @@
     "id": "Bantu Rhodey Setelah Kertasnya Robek"
   },
   "description": {
-    "en": "Rhodey's drawing paper tears and he cries. Approach, ask what happened, then give him replacement paper.",
-    "id": "Kertas gambar Rhodey robek dan ia menangis. Dekati, tanyakan yang terjadi, lalu berikan kertas pengganti."
+    "en": "Rhodey's drawing paper tears during class and the broken drawing feels important to him. He is upset not only because the paper is damaged, but because the work he cared about suddenly feels lost.",
+    "id": "Kertas gambar Rhodey robek saat di kelas dan gambar itu terasa penting baginya. Ia kesal bukan hanya karena kertasnya rusak, tetapi karena karya yang ia pedulikan terasa hilang tiba-tiba."
   },
+  "hints": [
+    {
+      "en": "A distressed child may need calm presence before they can explain what happened.",
+      "id": "Anak yang sangat sedih mungkin butuh kehadiran tenang sebelum bisa menjelaskan yang terjadi."
+    },
+    {
+      "en": "Problem solving lands better after the child feels heard.",
+      "id": "Solusi biasanya lebih diterima setelah anak merasa didengarkan."
+    },
+    {
+      "en": "A treat can distract from the feeling without repairing the actual problem.",
+      "id": "Hadiah makanan bisa mengalihkan perasaan tanpa memperbaiki masalah sebenarnya."
+    }
+  ],
   "initialState": "CRYING",
   "gridCount": 4,
   "choiceCount": 3,

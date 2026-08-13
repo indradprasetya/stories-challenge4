@@ -5,9 +5,18 @@
 > Characters: Jojo, Rhodey  
 > Grid: 4  
 > Choice Slots: 3  
+> Actions: 4  
 > Possibilities: 64
 
-**Synopsis**: Jojo is noisy and distracts Rhodey. Reset his attention, ask him to be quiet, then offer a crayon.
+### Description
+
+Jojo is full of energy during drawing time and his noise makes it hard for Rhodey to focus. The scene is about helping Jojo shift from active play into a calmer classroom activity.
+
+### Hints
+
+- Children often need attention before they can process an instruction.
+- A firm correction before connection can make a child defensive.
+- An activity item works best when the child is already regulated enough to use it.
 
 ### Grid & Choice Slot Breakdown
 
@@ -29,9 +38,7 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 - Attention Reset / Atur Ulang Perhatian
 - Crayon / Krayon
 
-### Ideal Path
-
-Attention Reset → Ask to Be Quiet → Crayon
+### Developer Mermaid
 
 ```mermaid
 flowchart LR
