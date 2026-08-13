@@ -545,9 +545,9 @@ const storySpecs = [
     characterNames: { jojo: "Jojo", rhodey: "Rhodey" },
     actions: [actions.asking, actions.blaming, actions.giveBandage, actions.lollipop, actions.approach],
     gridCount: 4,
-    dualFirstGrid: true,
+    dualGridOrders: [1, 2],
     initialState: "accusation",
-    ideal: [[actions.asking.id, actions.asking.id], [actions.approach.id], [actions.giveBandage.id]],
+    ideal: [[actions.asking.id, actions.approach.id], [actions.approach.id, actions.asking.id], [actions.giveBandage.id]],
     successStates: ["recovered"],
     retryStates: ["defensive", "distracted"],
     scenes: {
@@ -596,6 +596,7 @@ const storySpecs = [
       if (stepIndex === 0) {
         const [jojoAction, rhodeyAction] = selected;
         const pair = new Set(selected);
+        if (jojoAction === actions.asking.id && rhodeyAction === actions.approach.id) return "partiallyHeard";
         if (jojoAction === actions.asking.id && rhodeyAction === actions.asking.id) return "factsKnown";
         if (pair.has(actions.blaming.id)) return "defensive";
         if (pair.has(actions.lollipop.id)) return "distracted";
@@ -604,7 +605,6 @@ const storySpecs = [
         return "partiallyHeard";
       }
 
-      const actionID = selected[0];
       const matrix = {
         factsKnown: { action_asking: "factsKnown", action_blaming: "defensive", action_give_bandage: "treated", action_lollipop: "distracted", action_approach: "calm" },
         partiallyHeard: { action_asking: "factsKnown", action_blaming: "defensive", action_give_bandage: "treatedEarly", action_lollipop: "distracted", action_approach: "calmedUnknown" },
@@ -616,11 +616,24 @@ const storySpecs = [
         distracted: { action_asking: "partiallyHeard", action_blaming: "defensive", action_give_bandage: "treatedEarly", action_lollipop: "distracted", action_approach: "calmedUnknown" },
         recovered: { action_asking: "recovered", action_blaming: "defensive", action_give_bandage: "recovered", action_lollipop: "distracted", action_approach: "recovered" }
       };
-      return matrix[state][actionID];
+      const actionID = selected.length === 1
+        ? selected[0]
+        : (() => {
+            const [jojoAction, rhodeyAction] = selected;
+            const pair = new Set(selected);
+            if (jojoAction === actions.approach.id && rhodeyAction === actions.asking.id) return "ideal_followup";
+            if (pair.has(actions.blaming.id)) return actions.blaming.id;
+            if (pair.has(actions.lollipop.id)) return actions.lollipop.id;
+            if (selected.every(id => id === actions.approach.id)) return actions.approach.id;
+            if (pair.has(actions.giveBandage.id)) return actions.giveBandage.id;
+            if (pair.has(actions.approach.id)) return actions.approach.id;
+            return actions.asking.id;
+          })();
+      return actionID === "ideal_followup" ? "calm" : matrix[state][actionID];
     },
     mermaid: `flowchart LR
-    A["Grid 1: Rhodey is hurt; Jojo is accused"] -->|"Ask Jojo + Ask Rhodey"| B["Both accounts heard; accidental fall"]
-    B -->|"Approach on Grid 2"| C["Rhodey is calm"]
+    A["Grid 1: Rhodey is hurt; Jojo is accused"] -->|"Ask Jojo + Approach Rhodey"| B["Jojo explains; Rhodey calms"]
+    B -->|"Approach Jojo + Ask Rhodey on Grid 2"| C["Rhodey is calm"]
     C -->|"Give Bandage on Grid 3"| D["Recovered - Success"]
     A -->|"Any Blame"| E["Defensive - Retry"]
     A -->|"Any Lollipop"| F["Distracted - Retry"]`
@@ -686,11 +699,12 @@ function stateOutput(gridID, sceneDefinition) {
 }
 
 function buildStory(spec) {
+  const dualGridOrders = new Set(spec.dualGridOrders ?? (spec.dualFirstGrid ? [1] : []));
   const grids = Array.from({ length: spec.gridCount }, (_, index) => {
     const isFinal = index === spec.gridCount - 1;
     const dropSlots = isFinal
       ? []
-      : spec.dualFirstGrid && index === 0
+      : dualGridOrders.has(index + 1)
         ? [
             { id: "slot_jojo", targetCharacterID: "jojo" },
             { id: "slot_rhodey", targetCharacterID: "rhodey" }

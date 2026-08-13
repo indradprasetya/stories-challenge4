@@ -1,9 +1,9 @@
 #!/bin/sh
 set -eu
 
-base_url="http://127.0.0.1:8765"
+base_url="http://127.0.0.1:4175"
 
-python3 -m http.server 8765 >/tmp/stories-challenge4-http.log 2>&1 &
+python3 -m http.server 4175 >/tmp/stories-challenge4-http.log 2>&1 &
 server_pid=$!
 trap 'kill "$server_pid" 2>/dev/null || true' EXIT
 

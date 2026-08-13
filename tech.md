@@ -26,7 +26,7 @@ Every grid includes an ordered `dropSlots` array.
 
 The `order` of grids and drop slots is authoritative. Do not infer order from object keys or the order in which the player dragged items.
 
-`choiceCount` is the total number of drop slots across all interactive grids, not the number of interactive grids. A chapter with slot counts `[2, 1, 1, 0]` therefore has `choiceCount: 4`.
+`choiceCount` is the total number of drop slots across all interactive grids, not the number of interactive grids. A chapter with slot counts `[2, 2, 1, 0]` therefore has `choiceCount: 5`.
 
 ## Outcome Steps
 
@@ -61,7 +61,7 @@ The final grid cannot begin another step because its `dropSlots` array is empty.
 
 ## Dual-Slot Completion
 
-Story 2 Chapter 3 starts with two character-targeted slots:
+Story 2 Chapter 3 uses two character-targeted slots on Grid 1 and Grid 2:
 
 ```json
 {
@@ -79,7 +79,7 @@ Story 2 Chapter 3 starts with two character-targeted slots:
 }
 ```
 
-Grid 2 appears only after both slots contain valid actions. Before the second slot is filled, the player may replace the action in the first slot. After both slots are filled and the transition occurs, Grid 1 is locked.
+The next grid appears only after both slots contain valid actions. Before the second slot is filled, the player may replace the action in the first slot. After both slots are filled and the transition occurs, the source grid is locked.
 
 The order of dragging does not change the outcome. These two interactions are equivalent:
 
@@ -92,6 +92,12 @@ Both normalize to:
 
 ```text
 grid_1[slot_jojo:action_asking+slot_rhodey:action_asking]
+```
+
+Grid 2 follows the same rule. Its ideal placement is:
+
+```text
+grid_2[slot_jojo:action_approach+slot_rhodey:action_approach]
 ```
 
 ## Normalized Outcome Lookup

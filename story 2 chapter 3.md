@@ -4,9 +4,9 @@
 >
 > Characters: Jojo, Rhodey  
 > Grid: 4  
-> Choice Slots: 4  
+> Choice Slots: 5  
 > Actions: 5  
-> Possibilities: 625
+> Possibilities: 3125
 
 ### Description
 
@@ -25,11 +25,11 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 | Grid | Role | Choice Slots | Slot Target | Completion Rule |
 | --- | --- | ---: | --- | --- |
 | Grid 1 | Interactive | 2 | Jojo + Rhodey (one targeted slot each) | Both slots must be filled before Grid 2 appears. |
-| Grid 2 | Interactive | 1 | Scene (general slot) | One action completes this grid and reveals Grid 3. |
+| Grid 2 | Interactive | 2 | Jojo + Rhodey (one targeted slot each) | Both slots must be filled before Grid 3 appears. |
 | Grid 3 | Interactive | 1 | Scene (general slot) | One action completes this grid and reveals Grid 4. |
 | Grid 4 | Result | 0 | None | Shows the final result; no action can be dropped. |
 
-**Possibility formula:** 5 × 5 × 5 × 5 = 625 outcomes (5 actions across 4 slots). Every slot accepts any chapter action, and actions may be repeated in later slots.
+**Possibility formula:** 5 × 5 × 5 × 5 × 5 = 3125 outcomes (5 actions across 5 slots). Every slot accepts any chapter action, and actions may be repeated in later slots.
 
 ### Actions
 
@@ -43,8 +43,8 @@ A **grid** is one story frame. The grid count includes the final result frame. A
 
 ```mermaid
 flowchart LR
-    A["Grid 1: Rhodey is hurt; Jojo is accused"] -->|"Ask Jojo + Ask Rhodey"| B["Both accounts heard; accidental fall"]
-    B -->|"Approach on Grid 2"| C["Rhodey is calm"]
+    A["Grid 1: Rhodey is hurt; Jojo is accused"] -->|"Ask Jojo + Approach Rhodey"| B["Jojo explains; Rhodey calms"]
+    B -->|"Approach Jojo + Ask Rhodey on Grid 2"| C["Rhodey is calm"]
     C -->|"Give Bandage on Grid 3"| D["Recovered - Success"]
     A -->|"Any Blame"| E["Defensive - Retry"]
     A -->|"Any Lollipop"| F["Distracted - Retry"]

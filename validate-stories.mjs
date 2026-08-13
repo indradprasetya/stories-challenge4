@@ -7,7 +7,7 @@ const expectedCounts = new Map([
   ["story-1-chapter-3", 64],
   ["story-2-chapter-1", 9],
   ["story-2-chapter-2", 64],
-  ["story-2-chapter-3", 625]
+  ["story-2-chapter-3", 3125]
 ]);
 
 const idealActions = new Map([
@@ -16,7 +16,7 @@ const idealActions = new Map([
   ["story-1-chapter-3", [["action_approach"], ["action_asking"], ["action_paper"]]],
   ["story-2-chapter-1", [["action_approach"], ["action_asking"]]],
   ["story-2-chapter-2", [["action_asking"], ["action_approach"], ["action_apologize"]]],
-  ["story-2-chapter-3", [["action_asking", "action_asking"], ["action_approach"], ["action_give_bandage"]]]
+  ["story-2-chapter-3", [["action_asking", "action_approach"], ["action_approach", "action_asking"], ["action_give_bandage"]]]
 ]);
 
 const expectedExpressionIDs = new Set([
@@ -155,10 +155,12 @@ for (const page of chapterPages) {
   }
 
   if (page.slug === "story-2-chapter-3") {
-    assert.deepEqual(story.grids.map(grid => grid.dropSlots.length), [2, 1, 1, 0]);
+    assert.deepEqual(story.grids.map(grid => grid.dropSlots.length), [2, 2, 1, 0]);
     assert.deepEqual(story.grids[0].dropSlots.map(slot => slot.targetCharacterID), ["jojo", "rhodey"]);
+    assert.deepEqual(story.grids[1].dropSlots.map(slot => slot.targetCharacterID), ["jojo", "rhodey"]);
     assert.match(markdown, /Jojo \+ Rhodey \(one targeted slot each\)/, "dual-slot chapter must explain both targeted slots");
     assert.match(markdown, /Both slots must be filled before Grid 2 appears/, "dual-slot chapter must explain its completion rule");
+    assert.match(markdown, /Both slots must be filled before Grid 3 appears/, "second dual-slot chapter grid must explain its completion rule");
 
     const ideal = story.outcomes.find(outcome => outcome.isIdeal);
     const reversedFirstStep = {
@@ -249,7 +251,7 @@ for (const page of chapterPages) {
   totalOutcomes += story.outcomes.length;
 }
 
-assert.equal(totalOutcomes, 835, "total outcome count must be 835");
+assert.equal(totalOutcomes, 3335, "total outcome count must be 3335");
 
 for (const asset of assetCatalog.assets) {
   assert.ok(["action", "expression", "pose", "background"].includes(asset.type), `${asset.id} has invalid asset type`);
@@ -261,4 +263,4 @@ for (const asset of assetCatalog.assets) {
   assert.equal(asset.reuseCount, expectedUsage.length, `${asset.id} reuseCount mismatch`);
 }
 
-console.log("story contract validation passed: 6 chapters, 8 pages, 835 outcomes");
+console.log("story contract validation passed: 6 chapters, 8 pages, 3335 outcomes");
