@@ -193,3 +193,40 @@ Every complete outcome exposes:
 - `isIdeal`: `true` only for the canonical learning path.
 
 A safe alternative may have `category: "success"` while keeping `isIdeal: false`.
+
+## Persistent Player Progress
+
+Bundled story JSON is static content and must not contain mutable player progress. The app stores progress separately in local `UserDefaults`, keyed by the story JSON's root `id`.
+
+Only the player's selected steps are stored. Do not copy the story, states, or outcomes into the save data.
+
+```json
+{
+  "listen_before_helping_rhodey": [
+    {
+      "sourceGridID": "grid_1",
+      "placements": [
+        {
+          "slotID": "slot_jojo",
+          "actionID": "action_asking"
+        },
+        {
+          "slotID": "slot_rhodey",
+          "actionID": "action_approach"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The Swift backend exposes:
+
+- `StoryProgressStore.progress(for:)` to restore a story.
+- `StoryProgressStore.save(_:for:)` to persist its current steps.
+- `StoryProgressStore.reset(storyID:)` to restart one story.
+- `StoryProgressStore.resetAll()` to erase all game progress.
+
+Save after every accepted placement or replacement, including an incomplete dual-slot step. This lets the app restore both completed grids and the current partial grid after relaunch. Completed step order follows grid order; placement order follows `dropSlots` order.
+
+Progress survives app termination, device restart, and app updates. It is removed by the in-game reset operation or when the player deletes the app. Offloading the app may preserve its data.
