@@ -221,6 +221,7 @@ const storySpecs = [
     story: 1,
     chapter: 1,
     id: "rhodey_wants_to_draw",
+    shortTitle: localized("Let's Draw!", "Ayo Menggambar!"),
     title: localized("Make Rhodey Want to Draw", "Membuat Rhodey Mau Menggambar"),
     description: localized(
       "Rhodey is sitting in the classroom but does not feel ready to draw. He is close to the activity, yet his body language shows that he needs emotional safety before he can enjoy the drawing materials.",
@@ -268,6 +269,7 @@ const storySpecs = [
     story: 1,
     chapter: 2,
     id: "jojo_settles_down_to_draw",
+    shortTitle: localized("Too Loud to Draw", "Terlalu Berisik untuk Menggambar"),
     title: localized("Help Jojo Settle Down and Draw", "Bantu Jojo Tenang dan Menggambar"),
     description: localized(
       "Jojo is full of energy during drawing time and his noise makes it hard for Rhodey to focus. The scene is about helping Jojo shift from active play into a calmer classroom activity.",
@@ -338,6 +340,7 @@ const storySpecs = [
     story: 1,
     chapter: 3,
     id: "rhodey_torn_paper",
+    shortTitle: localized("My Drawing Tore", "Gambarku Robek"),
     title: localized("Help Rhodey After His Paper Tears", "Bantu Rhodey Setelah Kertasnya Robek"),
     description: localized(
       "Rhodey's drawing paper tears during class and the broken drawing feels important to him. He is upset not only because the paper is damaged, but because the work he cared about suddenly feels lost.",
@@ -391,6 +394,7 @@ const storySpecs = [
     story: 2,
     chapter: 1,
     id: "validate_jojo_feelings",
+    shortTitle: localized("That Hurt My Feelings", "Itu Menyakiti Perasaanku"),
     title: localized("Validate Jojo's Feelings", "Validasi Perasaan Jojo"),
     description: localized(
       "Jojo feels hurt in the playground after Rhodey says something unkind. The conflict is still small, but Jojo needs his feelings to be taken seriously before he can move on.",
@@ -451,6 +455,7 @@ const storySpecs = [
     story: 2,
     chapter: 2,
     id: "share_the_slide",
+    shortTitle: localized("The Slide Is Mine", "Perosotan Ini Milikku"),
     title: localized("Help Rhodey Share the Slide", "Bantu Rhodey Berbagi Perosotan"),
     description: localized(
       "Rhodey blocks the slide and does not want Jojo to join. From the outside it looks like selfish behavior, but the reason may be fear, discomfort, or a misunderstanding about safety.",
@@ -521,6 +526,7 @@ const storySpecs = [
     story: 2,
     chapter: 3,
     id: "listen_before_helping_rhodey",
+    shortTitle: localized("Jojo Pushed Me!", "Jojo Mendorongku!"),
     title: localized("Listen Before Helping Rhodey", "Dengarkan Sebelum Membantu Rhodey"),
     description: localized(
       "Rhodey falls in the playground and says Jojo pushed him. Rhodey is hurt and crying, while Jojo looks shocked by the accusation. The scene asks the player to handle injury, emotion, and fairness at the same time.",
@@ -746,6 +752,7 @@ function buildStory(spec) {
   return {
     schemaVersion: 4,
     id: spec.id,
+    shortTitle: spec.shortTitle,
     title: spec.title,
     description: spec.description,
     hints: spec.hints,
@@ -793,10 +800,11 @@ function markdownFor(spec, story) {
     return `| Grid ${grid.order} | Interactive | ${grid.dropSlots.length} | ${target} | ${completion} |`;
   }).join("\n");
 
-  return `## Chapter ${spec.chapter}: ${spec.title.en}
+  return `## Chapter ${spec.chapter}: ${spec.shortTitle.en}
 
 > **Overview**
 >
+> Full Title: ${spec.title.en}  
 > Character${Object.keys(spec.characterNames).length > 1 ? "s" : ""}: ${characterNames}  
 > Grid: ${spec.gridCount}  
 > Choice Slots: ${story.choiceCount}  
@@ -929,7 +937,7 @@ const manifest = generatedStories.map(({ spec }) => ({
   story: spec.story,
   chapter: spec.chapter,
   slug: slugFor(spec),
-  title: spec.title.en,
+  title: spec.shortTitle.en,
   markdown: filenameFor(spec, "md"),
   json: filenameFor(spec, "json")
 }));

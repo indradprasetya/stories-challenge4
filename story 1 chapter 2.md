@@ -1,7 +1,8 @@
-## Chapter 2: Help Jojo Settle Down and Draw
+## Chapter 2: Too Loud to Draw
 
 > **Overview**
 >
+> Full Title: Help Jojo Settle Down and Draw  
 > Characters: Jojo, Rhodey  
 > Grid: 4  
 > Choice Slots: 3  

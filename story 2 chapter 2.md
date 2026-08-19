@@ -1,7 +1,8 @@
-## Chapter 2: Help Rhodey Share the Slide
+## Chapter 2: The Slide Is Mine
 
 > **Overview**
 >
+> Full Title: Help Rhodey Share the Slide  
 > Characters: Jojo, Rhodey  
 > Grid: 4  
 > Choice Slots: 3  

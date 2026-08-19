@@ -557,7 +557,7 @@
       downloadJson.hidden = !hasJson || isAssetPage;
       if (!hasJson || isAssetPage) activeView = "markdown";
       document.title = chapter.type === "chapter"
-        ? `Story ${chapter.story}, Chapter ${chapter.chapter} | Story Documentation`
+        ? `${chapter.title} | Story Documentation`
         : `${chapter.title} | Story Documentation`;
       documentView.innerHTML = '<p class="text-base-content/60">Loading page...</p>';
       renderNavigation();

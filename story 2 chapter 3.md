@@ -1,7 +1,8 @@
-## Chapter 3: Listen Before Helping Rhodey
+## Chapter 3: Jojo Pushed Me!
 
 > **Overview**
 >
+> Full Title: Listen Before Helping Rhodey  
 > Characters: Jojo, Rhodey  
 > Grid: 4  
 > Choice Slots: 5  

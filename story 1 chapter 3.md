@@ -1,7 +1,8 @@
-## Chapter 3: Help Rhodey After His Paper Tears
+## Chapter 3: My Drawing Tore
 
 > **Overview**
 >
+> Full Title: Help Rhodey After His Paper Tears  
 > Character: Rhodey  
 > Grid: 4  
 > Choice Slots: 3  

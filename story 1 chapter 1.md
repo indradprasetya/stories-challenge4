@@ -1,7 +1,8 @@
-## Chapter 1: Make Rhodey Want to Draw
+## Chapter 1: Let's Draw!
 
 > **Overview**
 >
+> Full Title: Make Rhodey Want to Draw  
 > Character: Rhodey  
 > Grid: 3  
 > Choice Slots: 2  

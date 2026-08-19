@@ -1,7 +1,8 @@
-## Chapter 1: Validate Jojo's Feelings
+## Chapter 1: That Hurt My Feelings
 
 > **Overview**
 >
+> Full Title: Validate Jojo's Feelings  
 > Characters: Jojo, Rhodey  
 > Grid: 3  
 > Choice Slots: 2  

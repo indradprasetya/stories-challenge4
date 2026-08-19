@@ -107,7 +107,11 @@ for (const page of chapterPages) {
   const possibilityFactors = Array(story.choiceCount).fill(story.actions.length).join(" × ");
   assert.match(markdown, new RegExp(`\\*\\*Possibility formula:\\*\\* ${possibilityFactors} = ${expectedCount} outcomes \\(${story.actions.length} actions across ${story.choiceCount} slots\\)`), `${page.slug} must explain its possibility formula`);
   localized(story.title, `${page.slug} title`);
+  localized(story.shortTitle, `${page.slug} shortTitle`);
   localized(story.description, `${page.slug} description`);
+  assert.equal(page.title, story.shortTitle.en, `${page.slug} navigation must use shortTitle`);
+  assert.ok(markdown.includes(`## Chapter ${page.chapter}: ${story.shortTitle.en}`), `${page.slug} heading must use shortTitle`);
+  assert.ok(markdown.includes(`> Full Title: ${story.title.en}`), `${page.slug} overview must keep the full title`);
   assert.ok(Array.isArray(story.hints) && story.hints.length === 1, `${page.slug} must include exactly one subtle localized hint`);
   for (const [index, hint] of story.hints.entries()) {
     localized(hint, `${page.slug} hint ${index + 1}`);
