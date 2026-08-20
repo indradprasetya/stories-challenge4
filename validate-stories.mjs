@@ -73,6 +73,12 @@ assert.equal(assetPages.length, 1, "manifest must contain one Artist Assets page
 assert.equal(techPages.length, 1, "manifest must contain one Technical Guide page");
 assert.equal(techPages[0].markdown, "tech.md", "Technical Guide must render tech.md");
 assert.equal("json" in techPages[0], false, "Technical Guide must not expose a JSON file");
+const techMarkdown = await readFile(techPages[0].markdown, "utf8");
+for (const field of ["shortTitle", "completionSummary", "completionTip"]) {
+  assert.ok(techMarkdown.includes(`\`${field}\``), `Technical Guide must document ${field}`);
+}
+assert.ok(techMarkdown.includes("English and Indonesian"), "Technical Guide must document metadata localization");
+assert.ok(techMarkdown.includes("not player progress"), "Technical Guide must distinguish completion content from saved progress");
 
 const assetPage = assetPages[0];
 const assetCatalog = JSON.parse(await readFile(assetPage.json, "utf8"));

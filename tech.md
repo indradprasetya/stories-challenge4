@@ -2,6 +2,33 @@
 
 This document explains how the static story JSON describes drag-and-drop progression. It is intended for Swift developers, UI developers, and AI assistants working on the app.
 
+## Story Metadata
+
+Every chapter JSON contains localized metadata in English and Indonesian. Both `en` and `id` are required.
+
+```json
+{
+  "shortTitle": {
+    "en": "Let's Draw!",
+    "id": "Ayo Menggambar!"
+  },
+  "completionSummary": {
+    "en": "Rhodey needed to feel noticed before he could join in.",
+    "id": "Rhodey perlu merasa diperhatikan sebelum ia bisa ikut beraktivitas."
+  },
+  "completionTip": {
+    "en": "Before asking a hesitant child to join an activity, sit with them first.",
+    "id": "Sebelum mengajak anak yang masih ragu untuk mengikuti aktivitas, duduklah bersamanya terlebih dahulu."
+  }
+}
+```
+
+- `shortTitle` is the compact player-facing chapter name used in chapter lists, cards, and navigation. The longer `title` remains the descriptive objective.
+- `completionSummary` explains what the child needed and why the successful approach worked.
+- `completionTip` turns that lesson into practical guidance for the player.
+
+Show `completionSummary` and `completionTip` only after the chapter result is revealed. These fields are static story content, not player progress, and must remain in bundled JSON rather than `UserDefaults`.
+
 ## Core Model
 
 A grid is both a rendered story state and, unless it is the final grid, the drop target that produces the next state.
