@@ -109,9 +109,14 @@ for (const page of chapterPages) {
   localized(story.title, `${page.slug} title`);
   localized(story.shortTitle, `${page.slug} shortTitle`);
   localized(story.description, `${page.slug} description`);
+  localized(story.completionSummary, `${page.slug} completionSummary`);
+  localized(story.completionTip, `${page.slug} completionTip`);
   assert.equal(page.title, story.shortTitle.en, `${page.slug} navigation must use shortTitle`);
   assert.ok(markdown.includes(`## Chapter ${page.chapter}: ${story.shortTitle.en}`), `${page.slug} heading must use shortTitle`);
   assert.ok(markdown.includes(`> Full Title: ${story.title.en}`), `${page.slug} overview must keep the full title`);
+  assert.ok(markdown.includes("### After Chapter Completion"), `${page.slug} must document completion content`);
+  assert.ok(markdown.includes(story.completionSummary.en), `${page.slug} must show its completion summary`);
+  assert.ok(markdown.includes(`**Tip:** ${story.completionTip.en}`), `${page.slug} must show its completion tip`);
   assert.ok(Array.isArray(story.hints) && story.hints.length === 1, `${page.slug} must include exactly one subtle localized hint`);
   for (const [index, hint] of story.hints.entries()) {
     localized(hint, `${page.slug} hint ${index + 1}`);

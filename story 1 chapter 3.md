@@ -17,6 +17,12 @@ Rhodey's drawing paper tears during class and the broken drawing feels important
 
 - A distressed child may need calm presence before they can explain what happened.
 
+### After Chapter Completion
+
+Rhodey needed comfort before he could talk about what happened. Once he felt heard, he was ready to try again.
+
+**Tip:** When something small upsets a child deeply, comfort them first. Let them tell you what happened before you offer a fix.
+
 ### Grid & Choice Slot Breakdown
 
 A **grid** is one story frame. The grid count includes the final result frame. A **choice slot** is one place where the player must drop an action; one interactive grid may contain more than one slot.

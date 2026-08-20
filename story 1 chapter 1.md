@@ -17,6 +17,12 @@ Rhodey is sitting in the classroom but does not feel ready to draw. He is close 
 
 - A child may join an activity more easily after feeling noticed and accompanied.
 
+### After Chapter Completion
+
+Rhodey needed to feel noticed before he could join in. Sitting with him first made the invitation to draw feel safe.
+
+**Tip:** Before asking a hesitant child to join an activity, sit with them first. Let them feel your presence before you invite them in.
+
 ### Grid & Choice Slot Breakdown
 
 A **grid** is one story frame. The grid count includes the final result frame. A **choice slot** is one place where the player must drop an action; one interactive grid may contain more than one slot.

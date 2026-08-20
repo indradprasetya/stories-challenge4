@@ -17,6 +17,12 @@ Rhodey falls in the playground and says Jojo pushed him. Rhodey is hurt and cryi
 
 - When two children are involved, emotional safety and fairness need to move together.
 
+### After Chapter Completion
+
+Rhodey was hurt and Jojo was accused, and both needed attention at the same time. Comfort and fairness had to happen together.
+
+**Tip:** When two children are upset at once, calm the hurt one and listen to both sides without blame. Fix what's broken after that.
+
 ### Grid & Choice Slot Breakdown
 
 A **grid** is one story frame. The grid count includes the final result frame. A **choice slot** is one place where the player must drop an action; one interactive grid may contain more than one slot.

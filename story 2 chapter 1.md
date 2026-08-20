@@ -17,6 +17,12 @@ Jojo feels hurt in the playground after Rhodey says something unkind. The confli
 
 - Validation starts by making the child feel safe enough to speak.
 
+### After Chapter Completion
+
+Jojo needed his feelings taken seriously before anything else. Feeling safe enough to speak came first.
+
+**Tip:** When a child gets hurt by another child, validate the feeling before sorting out who did what. That safety makes it possible to talk.
+
 ### Grid & Choice Slot Breakdown
 
 A **grid** is one story frame. The grid count includes the final result frame. A **choice slot** is one place where the player must drop an action; one interactive grid may contain more than one slot.

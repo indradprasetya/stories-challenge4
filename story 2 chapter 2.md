@@ -17,6 +17,12 @@ Rhodey blocks the slide and does not want Jojo to join. From the outside it look
 
 - Children can repair a conflict more naturally after the situation feels understood.
 
+### After Chapter Completion
+
+Rhodey had a reason for holding onto the slide. Understanding that reason came before the apology could mean anything.
+
+**Tip:** Before asking two children to make up, find out what's really going on. An apology means more once it's understood.
+
 ### Grid & Choice Slot Breakdown
 
 A **grid** is one story frame. The grid count includes the final result frame. A **choice slot** is one place where the player must drop an action; one interactive grid may contain more than one slot.

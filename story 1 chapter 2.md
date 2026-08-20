@@ -17,6 +17,12 @@ Jojo is full of energy during drawing time and his noise makes it hard for Rhode
 
 - Children often need attention before they can process an instruction.
 
+### After Chapter Completion
+
+Jojo's energy needed somewhere to go before an instruction could reach him. Getting his attention gently made the request possible.
+
+**Tip:** Get a distracted child's attention first, with a clap or their name, before asking for anything. Then the instruction has a chance to land.
+
 ### Grid & Choice Slot Breakdown
 
 A **grid** is one story frame. The grid count includes the final result frame. A **choice slot** is one place where the player must drop an action; one interactive grid may contain more than one slot.

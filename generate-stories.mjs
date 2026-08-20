@@ -227,6 +227,14 @@ const storySpecs = [
       "Rhodey is sitting in the classroom but does not feel ready to draw. He is close to the activity, yet his body language shows that he needs emotional safety before he can enjoy the drawing materials.",
       "Rhodey duduk di kelas tetapi belum merasa siap untuk menggambar. Ia dekat dengan aktivitasnya, tetapi bahasa tubuhnya menunjukkan bahwa ia butuh rasa aman sebelum bisa menikmati alat gambar."
     ),
+    completionSummary: localized(
+      "Rhodey needed to feel noticed before he could join in. Sitting with him first made the invitation to draw feel safe.",
+      "Rhodey perlu merasa diperhatikan sebelum ia bisa ikut beraktivitas. Duduk menemaninya terlebih dahulu membuat ajakan untuk menggambar terasa aman."
+    ),
+    completionTip: localized(
+      "Before asking a hesitant child to join an activity, sit with them first. Let them feel your presence before you invite them in.",
+      "Sebelum mengajak anak yang masih ragu untuk mengikuti aktivitas, duduklah bersamanya terlebih dahulu. Biarkan ia merasakan kehadiranmu sebelum mengajaknya ikut."
+    ),
     hints: [
       localized("A child may join an activity more easily after feeling noticed and accompanied.", "Anak sering lebih mudah ikut aktivitas setelah merasa diperhatikan dan ditemani.")
     ],
@@ -274,6 +282,14 @@ const storySpecs = [
     description: localized(
       "Jojo is full of energy during drawing time and his noise makes it hard for Rhodey to focus. The scene is about helping Jojo shift from active play into a calmer classroom activity.",
       "Jojo sangat berenergi saat waktunya menggambar dan suaranya membuat Rhodey sulit fokus. Adegan ini tentang membantu Jojo berpindah dari bermain aktif ke aktivitas kelas yang lebih tenang."
+    ),
+    completionSummary: localized(
+      "Jojo's energy needed somewhere to go before an instruction could reach him. Getting his attention gently made the request possible.",
+      "Energi Jojo perlu disalurkan sebelum instruksi bisa diterimanya. Menarik perhatiannya dengan lembut membuat permintaan tersebut dapat dipahami."
+    ),
+    completionTip: localized(
+      "Get a distracted child's attention first, with a clap or their name, before asking for anything. Then the instruction has a chance to land.",
+      "Tarik perhatian anak yang terdistraksi terlebih dahulu, dengan tepukan tangan atau memanggil namanya, sebelum meminta sesuatu. Dengan begitu, instruksi lebih mungkin diterima."
     ),
     hints: [
       localized("Children often need attention before they can process an instruction.", "Anak sering perlu diarahkan perhatiannya sebelum bisa memproses instruksi.")
@@ -346,6 +362,14 @@ const storySpecs = [
       "Rhodey's drawing paper tears during class and the broken drawing feels important to him. He is upset not only because the paper is damaged, but because the work he cared about suddenly feels lost.",
       "Kertas gambar Rhodey robek saat di kelas dan gambar itu terasa penting baginya. Ia kesal bukan hanya karena kertasnya rusak, tetapi karena karya yang ia pedulikan terasa hilang tiba-tiba."
     ),
+    completionSummary: localized(
+      "Rhodey needed comfort before he could talk about what happened. Once he felt heard, he was ready to try again.",
+      "Rhodey membutuhkan rasa nyaman sebelum ia bisa menceritakan apa yang terjadi. Setelah merasa didengarkan, ia siap mencoba lagi."
+    ),
+    completionTip: localized(
+      "When something small upsets a child deeply, comfort them first. Let them tell you what happened before you offer a fix.",
+      "Saat hal yang tampak kecil membuat anak sangat sedih, tenangkan ia terlebih dahulu. Biarkan ia menceritakan apa yang terjadi sebelum kamu menawarkan solusi."
+    ),
     hints: [
       localized("A distressed child may need calm presence before they can explain what happened.", "Anak yang sangat sedih mungkin butuh kehadiran tenang sebelum bisa menjelaskan yang terjadi.")
     ],
@@ -399,6 +423,14 @@ const storySpecs = [
     description: localized(
       "Jojo feels hurt in the playground after Rhodey says something unkind. The conflict is still small, but Jojo needs his feelings to be taken seriously before he can move on.",
       "Jojo merasa sakit hati di taman setelah Rhodey mengatakan sesuatu yang tidak baik. Konfliknya masih kecil, tetapi Jojo perlu merasa perasaannya dianggap serius sebelum bisa lanjut bermain."
+    ),
+    completionSummary: localized(
+      "Jojo needed his feelings taken seriously before anything else. Feeling safe enough to speak came first.",
+      "Jojo perlu merasa bahwa perasaannya dianggap serius sebelum hal lain dibahas. Ia perlu merasa cukup aman untuk bicara terlebih dahulu."
+    ),
+    completionTip: localized(
+      "When a child gets hurt by another child, validate the feeling before sorting out who did what. That safety makes it possible to talk.",
+      "Saat seorang anak tersakiti oleh anak lain, validasi perasaannya sebelum mencari tahu siapa yang melakukan apa. Rasa aman itu membuat percakapan menjadi mungkin."
     ),
     hints: [
       localized("Validation starts by making the child feel safe enough to speak.", "Validasi dimulai dari membuat anak merasa cukup aman untuk bicara.")
@@ -460,6 +492,14 @@ const storySpecs = [
     description: localized(
       "Rhodey blocks the slide and does not want Jojo to join. From the outside it looks like selfish behavior, but the reason may be fear, discomfort, or a misunderstanding about safety.",
       "Rhodey menghalangi perosotan dan tidak mau Jojo ikut bermain. Dari luar terlihat seperti egois, tetapi alasannya bisa berupa takut, tidak nyaman, atau salah paham tentang rasa aman."
+    ),
+    completionSummary: localized(
+      "Rhodey had a reason for holding onto the slide. Understanding that reason came before the apology could mean anything.",
+      "Rhodey memiliki alasan untuk mempertahankan perosotan. Memahami alasan tersebut perlu dilakukan sebelum permintaan maaf bisa benar-benar berarti."
+    ),
+    completionTip: localized(
+      "Before asking two children to make up, find out what's really going on. An apology means more once it's understood.",
+      "Sebelum meminta dua anak berdamai, cari tahu apa yang sebenarnya terjadi. Permintaan maaf lebih bermakna setelah situasinya dipahami."
     ),
     hints: [
       localized("Children can repair a conflict more naturally after the situation feels understood.", "Anak bisa memperbaiki konflik dengan lebih alami setelah situasinya terasa dipahami.")
@@ -531,6 +571,14 @@ const storySpecs = [
     description: localized(
       "Rhodey falls in the playground and says Jojo pushed him. Rhodey is hurt and crying, while Jojo looks shocked by the accusation. The scene asks the player to handle injury, emotion, and fairness at the same time.",
       "Rhodey jatuh di taman dan mengatakan Jojo mendorongnya. Rhodey terluka dan menangis, sementara Jojo terlihat terkejut karena dituduh. Adegan ini meminta pemain menangani luka, emosi, dan keadilan sekaligus."
+    ),
+    completionSummary: localized(
+      "Rhodey was hurt and Jojo was accused, and both needed attention at the same time. Comfort and fairness had to happen together.",
+      "Rhodey terluka dan Jojo dituduh, sehingga keduanya membutuhkan perhatian pada saat yang sama. Rasa nyaman dan keadilan perlu berjalan bersama."
+    ),
+    completionTip: localized(
+      "When two children are upset at once, calm the hurt one and listen to both sides without blame. Fix what's broken after that.",
+      "Saat dua anak sama-sama sedang kesal, tenangkan anak yang terluka dan dengarkan kedua sisi tanpa menyalahkan. Perbaiki masalahnya setelah itu."
     ),
     hints: [
       localized("When two children are involved, emotional safety and fairness need to move together.", "Saat ada dua anak terlibat, rasa aman emosional dan keadilan perlu berjalan bersama.")
@@ -755,6 +803,8 @@ function buildStory(spec) {
     shortTitle: spec.shortTitle,
     title: spec.title,
     description: spec.description,
+    completionSummary: spec.completionSummary,
+    completionTip: spec.completionTip,
     hints: spec.hints,
     initialState: spec.initialState.replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase(),
     gridCount: spec.gridCount,
@@ -818,6 +868,12 @@ ${spec.description.en}
 ### Hints
 
 ${hintList}
+
+### After Chapter Completion
+
+${spec.completionSummary.en}
+
+**Tip:** ${spec.completionTip.en}
 
 ### Grid & Choice Slot Breakdown
 
