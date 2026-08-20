@@ -10,6 +10,15 @@ const expectedCounts = new Map([
   ["story-2-chapter-3", 3125]
 ]);
 
+const expectedChallenges = new Map([
+  ["story-1-chapter-1", { maximumPlacements: 8, threeStars: 3, twoStars: 5 }],
+  ["story-1-chapter-2", { maximumPlacements: 15, threeStars: 5, twoStars: 9 }],
+  ["story-1-chapter-3", { maximumPlacements: 15, threeStars: 5, twoStars: 9 }],
+  ["story-2-chapter-1", { maximumPlacements: 8, threeStars: 3, twoStars: 5 }],
+  ["story-2-chapter-2", { maximumPlacements: 15, threeStars: 5, twoStars: 9 }],
+  ["story-2-chapter-3", { maximumPlacements: 30, threeStars: 8, twoStars: 18 }]
+]);
+
 const idealActions = new Map([
   ["story-1-chapter-1", [["action_approach"], ["action_crayon"]]],
   ["story-1-chapter-2", [["action_attention_reset"], ["action_ask_quiet"], ["action_crayon"]]],
@@ -74,11 +83,14 @@ assert.equal(techPages.length, 1, "manifest must contain one Technical Guide pag
 assert.equal(techPages[0].markdown, "tech.md", "Technical Guide must render tech.md");
 assert.equal("json" in techPages[0], false, "Technical Guide must not expose a JSON file");
 const techMarkdown = await readFile(techPages[0].markdown, "utf8");
-for (const field of ["shortTitle", "completionSummary", "completionTip"]) {
+for (const field of ["shortTitle", "completionSummary", "completionTip", "maximumPlacements", "starThresholds", "placementLimitMessage"]) {
   assert.ok(techMarkdown.includes(`\`${field}\``), `Technical Guide must document ${field}`);
 }
 assert.ok(techMarkdown.includes("English and Indonesian"), "Technical Guide must document metadata localization");
 assert.ok(techMarkdown.includes("not player progress"), "Technical Guide must distinguish completion content from saved progress");
+for (const state of ["Green", "Yellow", "Orange", "Red"]) {
+  assert.ok(techMarkdown.includes(`**${state}**`), `Technical Guide must document the ${state.toLowerCase()} placement state`);
+}
 
 const assetPage = assetPages[0];
 const assetCatalog = JSON.parse(await readFile(assetPage.json, "utf8"));
@@ -96,11 +108,24 @@ for (const page of chapterPages) {
   const markdown = await readFile(page.markdown, "utf8");
   const expectedCount = expectedCounts.get(page.slug);
 
-  assert.equal(story.schemaVersion, 4, `${page.slug} must use schema version 4`);
+  assert.equal(story.schemaVersion, 5, `${page.slug} must use schema version 5`);
   assert.equal(story.gridCount, story.grids.length, `${page.slug} gridCount mismatch`);
   assert.equal(story.choiceCount, story.grids.reduce((sum, grid) => sum + grid.dropSlots.length, 0), `${page.slug} choiceCount must equal total drop slots`);
   assert.equal(story.outcomes.length, expectedCount, `${page.slug} outcome count mismatch`);
+  assert.deepEqual({ maximumPlacements: story.maximumPlacements, ...story.starThresholds }, expectedChallenges.get(page.slug), `${page.slug} challenge settings mismatch`);
+  assert.ok(story.starThresholds.threeStars >= story.choiceCount, `${page.slug} three-star threshold must allow the ideal path`);
+  assert.ok(story.starThresholds.threeStars < story.starThresholds.twoStars, `${page.slug} star thresholds must ascend`);
+  assert.ok(story.starThresholds.twoStars < story.maximumPlacements, `${page.slug} two-star threshold must be below the limit`);
+  localized(story.placementLimitMessage, `${page.slug} placementLimitMessage`);
+  for (const character of story.characters) {
+    assert.ok(story.placementLimitMessage.en.includes(character.displayName), `${page.slug} limit message must name ${character.displayName}`);
+  }
   assert.match(markdown, new RegExp(`Possibilities:\\s*${expectedCount}`), `${page.slug} must document its possibility count`);
+  assert.match(markdown, new RegExp(`Maximum Placements:\\s*${story.maximumPlacements}`), `${page.slug} must document its placement limit`);
+  assert.match(markdown, /Green face.*3 stars/, `${page.slug} must document green as 3 stars`);
+  assert.match(markdown, /Yellow face.*2 stars/, `${page.slug} must document yellow as 2 stars`);
+  assert.match(markdown, /Orange face.*1 star/, `${page.slug} must document orange as 1 star`);
+  assert.match(markdown, /Red face.*chapter ends without stars/, `${page.slug} must document red as loss`);
   assert.match(markdown, new RegExp(`Choice Slots:\\s*${story.choiceCount}`), `${page.slug} must document its choice slot count`);
   assert.match(markdown, new RegExp(`Actions:\\s*${story.actions.length}`), `${page.slug} must document its action count`);
   assert.doesNotMatch(markdown, /^> Story:/m, `${page.slug} overview must not repeat its story number`);

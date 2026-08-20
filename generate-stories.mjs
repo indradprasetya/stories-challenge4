@@ -762,6 +762,19 @@ function buildStory(spec) {
   });
 
   const interactiveGrids = grids.slice(0, -1);
+  const choiceCount = grids.reduce((sum, grid) => sum + grid.dropSlots.length, 0);
+  const challenge = choiceCount === 2
+    ? { maximumPlacements: 8, starThresholds: { threeStars: 3, twoStars: 5 } }
+    : choiceCount === 3
+      ? { maximumPlacements: 15, starThresholds: { threeStars: 5, twoStars: 9 } }
+      : { maximumPlacements: 30, starThresholds: { threeStars: 8, twoStars: 18 } };
+  const characterNames = Object.values(spec.characterNames);
+  const englishNames = characterNames.length === 1
+    ? characterNames[0]
+    : `${characterNames.slice(0, -1).join(", ")} and ${characterNames.at(-1)}`;
+  const indonesianNames = characterNames.length === 1
+    ? characterNames[0]
+    : `${characterNames.slice(0, -1).join(", ")} dan ${characterNames.at(-1)}`;
   const stepOptions = interactiveGrids.map(grid => placementOptions(grid, spec.actions));
   const stepCombinations = product(stepOptions);
   const outcomes = stepCombinations.map(placementsByStep => {
@@ -798,7 +811,7 @@ function buildStory(spec) {
   }
 
   return {
-    schemaVersion: 4,
+    schemaVersion: 5,
     id: spec.id,
     shortTitle: spec.shortTitle,
     title: spec.title,
@@ -808,7 +821,12 @@ function buildStory(spec) {
     hints: spec.hints,
     initialState: spec.initialState.replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase(),
     gridCount: spec.gridCount,
-    choiceCount: grids.reduce((sum, grid) => sum + grid.dropSlots.length, 0),
+    choiceCount,
+    ...challenge,
+    placementLimitMessage: localized(
+      `${englishNames} ${characterNames.length === 1 ? "is" : "are"} tired. You took too long.`,
+      `${indonesianNames} kelelahan. Kamu terlalu lama.`
+    ),
     actions: spec.actions.map(({ id, name }) => ({ id, name })),
     characters: Object.entries(spec.characterNames).map(([id, displayName]) => ({
       id,
@@ -859,7 +877,8 @@ function markdownFor(spec, story) {
 > Grid: ${spec.gridCount}  
 > Choice Slots: ${story.choiceCount}  
 > Actions: ${story.actions.length}  
-> Possibilities: ${story.outcomes.length}
+> Possibilities: ${story.outcomes.length}  
+> Maximum Placements: ${story.maximumPlacements}
 
 ### Description
 
@@ -874,6 +893,17 @@ ${hintList}
 ${spec.completionSummary.en}
 
 **Tip:** ${spec.completionTip.en}
+
+### Challenge & Stars
+
+The player can make at most **${story.maximumPlacements} accepted placements or replacements**. Reaching a successful outcome on the final allowed placement still completes the chapter. Otherwise, show: “${story.placementLimitMessage.en}”
+
+The face indicator changes with the current placement range. Stars are awarded only after success:
+
+- **Green face — 3 stars:** 0–${story.starThresholds.threeStars} placements
+- **Yellow face — 2 stars:** ${story.starThresholds.threeStars + 1}–${story.starThresholds.twoStars} placements
+- **Orange face — 1 star:** ${story.starThresholds.twoStars + 1}–${story.maximumPlacements} placements when the chapter succeeds
+- **Red face — chapter ends without stars:** ${story.maximumPlacements} placements without a successful outcome
 
 ### Grid & Choice Slot Breakdown
 

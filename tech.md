@@ -36,7 +36,7 @@ A grid is both a rendered story state and, unless it is the final grid, the drop
 1. Render Grid 1 from `outcome.states[0]`.
 2. Accept action placements in Grid 1's `dropSlots`.
 3. When every required slot is filled, find the matching outcome step and reveal Grid 2.
-4. Lock Grid 1 so its completed choice cannot change.
+4. Keep Grid 1 editable so the player can explore another action; recalculate all later states after a replacement.
 5. Repeat on each newly revealed interactive grid.
 6. Render the final grid as a result. It has no drop slots and never accepts an action.
 
@@ -49,7 +49,7 @@ Every grid includes an ordered `dropSlots` array.
 - A normal interactive grid has one generic `slot_scene` whose `targetCharacterID` is `null`.
 - A character-targeted grid has one slot per target character.
 - A final grid has an empty `dropSlots` array and `locked: true`.
-- Other grids start with `locked: false`. The runtime locks them after their step completes.
+- Other grids start with `locked: false`. They remain editable after the next grid appears.
 
 The `order` of grids and drop slots is authoritative. Do not infer order from object keys or the order in which the player dragged items.
 
@@ -81,7 +81,7 @@ A single-slot step completes immediately after one valid action is dropped into 
 Grid 1 receives Approach
 → match grid_1[slot_scene:action_approach]
 → reveal the matching Grid 2 state
-→ lock Grid 1
+→ keep Grid 1 editable for exploration
 ```
 
 The final grid cannot begin another step because its `dropSlots` array is empty.
@@ -106,7 +106,7 @@ Story 2 Chapter 3 uses two character-targeted slots on Grid 1 and Grid 2:
 }
 ```
 
-The next grid appears only after both slots contain valid actions. Before the second slot is filled, the player may replace the action in the first slot. After both slots are filled and the transition occurs, the source grid is locked.
+The next grid appears only after both slots contain valid actions. The player may replace either action before or after the next grid appears; every replacement recalculates downstream states.
 
 The order of dragging does not change the outcome. These two interactions are equivalent:
 
@@ -205,8 +205,8 @@ Reject a story or placement when any of these conditions occur:
 - A placement targets a slot that does not belong to its source grid.
 - Two placements use the same slot in one step.
 - A completed step omits a required slot.
-- A step is submitted for a grid other than the current interactive grid.
-- A drop is attempted on a completed or final grid.
+- A step is submitted for a grid that has not been revealed yet.
+- A drop is attempted on the final grid.
 - No outcome matches the normalized completed steps.
 
 An incomplete dual-slot step is valid pending input, but it must not reveal the next grid. Keep it as temporary UI state until the remaining slot is filled or the existing selection is replaced.
@@ -221,18 +221,62 @@ Every complete outcome exposes:
 
 A safe alternative may have `category: "success"` while keeping `isIdeal: false`.
 
+## Placement Challenge and Stars
+
+Every story defines its challenge without storing mutable player state:
+
+- `maximumPlacements` is the accepted placement/replacement limit.
+- `starThresholds` contains the green/3-star and yellow/2-star boundaries.
+- `placementLimitMessage` is the localized character-specific break message.
+
+```json
+{
+  "maximumPlacements": 15,
+  "starThresholds": {
+    "threeStars": 5,
+    "twoStars": 9
+  },
+  "placementLimitMessage": {
+    "en": "Jojo and Rhodey are tired. You took too long.",
+    "id": "Jojo dan Rhodey kelelahan. Kamu terlalu lama."
+  }
+}
+```
+
+- Count one placement when an empty slot accepts an action or an occupied slot accepts a different action.
+- Do not count an invalid drop, the same action dropped into the same slot, removal, restoration, or automatic state recalculation.
+- Check success before checking the limit. A successful outcome on the final allowed placement still completes the chapter.
+- If the limit is reached without a `success` outcome, enter `needsBreak`; never label it “Game Over.” Use the localized `placementLimitMessage`, which names every character in that chapter.
+- Derive the visible face color directly from `starThresholds` and `maximumPlacements`; do not maintain a second set of UI thresholds.
+
+The placement feedback has exactly four states:
+
+- **Green**: `placementCount <= threeStars`; a success earns 3 stars.
+- **Yellow**: above `threeStars` through `twoStars`; a success earns 2 stars.
+- **Orange**: above `twoStars`; a success earns 1 star, including success on the final allowed placement.
+- **Red**: `maximumPlacements` reached without success; the chapter enters `needsBreak` and awards no stars.
+
+Stars are calculated only after success. The current chapters use these settings:
+
+| Choice Slots | Maximum Placements | Green / 3 Stars | Yellow / 2 Stars | Orange / 1 Star | Red / Loss |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 2 | 8 | 0–3 | 4–5 | 6–8 on success | 8 without success |
+| 3 | 15 | 0–5 | 6–9 | 10–15 on success | 15 without success |
+| 5 | 30 | 0–8 | 9–18 | 19–30 on success | 30 without success |
+
 ## Persistent Player Progress
 
 Bundled story JSON is static content and must not contain mutable player progress. The app stores progress separately in local `UserDefaults`, keyed by the story JSON's root `id`.
 
-Only the player's selected steps are stored. Do not copy the story, states, or outcomes into the save data.
+Store an optional active run separately from the best completed result. Do not copy the story, states, or outcomes into save data.
 
 ```json
 {
-  "listen_before_helping_rhodey": [
-    {
-      "sourceGridID": "grid_1",
-      "placements": [
+  "listen_before_helping_rhodey": {
+    "activeRun": {
+      "steps": [{
+        "sourceGridID": "grid_1",
+        "placements": [
         {
           "slotID": "slot_jojo",
           "actionID": "action_asking"
@@ -241,19 +285,31 @@ Only the player's selected steps are stored. Do not copy the story, states, or o
           "slotID": "slot_rhodey",
           "actionID": "action_approach"
         }
-      ]
+        ]
+      }],
+      "placementCount": 7,
+      "status": "playing"
+    },
+    "completion": {
+      "bestStars": 2,
+      "bestPlacementCount": 12
     }
-  ]
+  }
 }
 ```
 
 The Swift backend exposes:
 
-- `StoryProgressStore.progress(for:)` to restore a story.
-- `StoryProgressStore.save(_:for:)` to persist its current steps.
-- `StoryProgressStore.reset(storyID:)` to restart one story.
+- `StoryProgressStore.state(for:)` to restore the active run and best completion.
+- `StoryProgressStore.saveActiveRun(_:for:)` after an accepted placement, replacement, or removal.
+- `StoryProgressStore.complete(storyID:stars:placementCount:)` to keep the better completed result and clear the active run.
+- `StoryProgressStore.clearActiveRun(storyID:)` for Try Again while preserving completed stars.
 - `StoryProgressStore.resetAll()` to erase all game progress.
 
-Save after every accepted placement or replacement, including an incomplete dual-slot step. This lets the app restore both completed grids and the current partial grid after relaunch. Completed step order follows grid order; placement order follows `dropSlots` order.
+Save after every accepted placement or replacement, including an incomplete dual-slot step. Save removals too, without increasing `placementCount`. This lets the app restore both completed grids and the current partial grid after relaunch. Completed step order follows grid order; placement order follows `dropSlots` order.
+
+When the player leaves an unfinished chapter, keep `activeRun`; opening that chapter resumes it. On success, save only the best stars and lowest placement count, then clear `activeRun`. Opening a completed chapter with no active run starts a blank replay. If that replay is abandoned, its new `activeRun` coexists with the previous best completion. A worse replay never replaces the best result.
+
+When a run reaches the limit, save `activeRun.status` as `needsBreak`. Reopening the chapter restores the same break screen. Try Again clears only `activeRun`; a full data reset or app deletion clears both active runs and completed results.
 
 Progress survives app termination, device restart, and app updates. It is removed by the in-game reset operation or when the player deletes the app. Offloading the app may preserve its data.

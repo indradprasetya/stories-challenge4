@@ -7,7 +7,8 @@
 > Grid: 3  
 > Choice Slots: 2  
 > Actions: 3  
-> Possibilities: 9
+> Possibilities: 9  
+> Maximum Placements: 8
 
 ### Description
 
@@ -22,6 +23,17 @@ Rhodey is sitting in the classroom but does not feel ready to draw. He is close 
 Rhodey needed to feel noticed before he could join in. Sitting with him first made the invitation to draw feel safe.
 
 **Tip:** Before asking a hesitant child to join an activity, sit with them first. Let them feel your presence before you invite them in.
+
+### Challenge & Stars
+
+The player can make at most **8 accepted placements or replacements**. Reaching a successful outcome on the final allowed placement still completes the chapter. Otherwise, show: “Rhodey is tired. You took too long.”
+
+The face indicator changes with the current placement range. Stars are awarded only after success:
+
+- **Green face — 3 stars:** 0–3 placements
+- **Yellow face — 2 stars:** 4–5 placements
+- **Orange face — 1 star:** 6–8 placements when the chapter succeeds
+- **Red face — chapter ends without stars:** 8 placements without a successful outcome
 
 ### Grid & Choice Slot Breakdown
 

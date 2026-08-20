@@ -7,7 +7,8 @@
 > Grid: 4  
 > Choice Slots: 3  
 > Actions: 4  
-> Possibilities: 64
+> Possibilities: 64  
+> Maximum Placements: 15
 
 ### Description
 
@@ -22,6 +23,17 @@ Rhodey blocks the slide and does not want Jojo to join. From the outside it look
 Rhodey had a reason for holding onto the slide. Understanding that reason came before the apology could mean anything.
 
 **Tip:** Before asking two children to make up, find out what's really going on. An apology means more once it's understood.
+
+### Challenge & Stars
+
+The player can make at most **15 accepted placements or replacements**. Reaching a successful outcome on the final allowed placement still completes the chapter. Otherwise, show: “Jojo and Rhodey are tired. You took too long.”
+
+The face indicator changes with the current placement range. Stars are awarded only after success:
+
+- **Green face — 3 stars:** 0–5 placements
+- **Yellow face — 2 stars:** 6–9 placements
+- **Orange face — 1 star:** 10–15 placements when the chapter succeeds
+- **Red face — chapter ends without stars:** 15 placements without a successful outcome
 
 ### Grid & Choice Slot Breakdown
 

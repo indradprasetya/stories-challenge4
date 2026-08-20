@@ -25,7 +25,9 @@ curl -fsS "$base_url/story%201%20chapter%201.md" | grep -q "Make Rhodey Want to 
 curl -fsS "$base_url/story%201%20chapter%201.json" |
   jq -e '
     .id == "rhodey_wants_to_draw" and
-    .schemaVersion == 4 and
+    .schemaVersion == 5 and
+    .maximumPlacements == 8 and
+    .starThresholds == {"threeStars": 3, "twoStars": 5} and
     (.outcomes | length == 9) and
     (.grids | length == 3 and all(.[]; .backgroundID == "background_classroom")) and
     (.grids | map(.dropSlots | length) == [1, 1, 0])
@@ -39,7 +41,12 @@ for chapter_file in \
   story%202%20chapter%203
 do
   curl -fsS "$base_url/$chapter_file.md" >/dev/null
-  curl -fsS "$base_url/$chapter_file.json" | jq -e '.schemaVersion == 4' >/dev/null
+  curl -fsS "$base_url/$chapter_file.json" | jq -e '
+    .schemaVersion == 5 and
+    (.maximumPlacements > .choiceCount) and
+    (.starThresholds.threeStars < .starThresholds.twoStars) and
+    (.starThresholds.twoStars < .maximumPlacements)
+  ' >/dev/null
 done
 
 curl -fsS "$base_url/artist%20assets.md" | grep -q "Artist Assets"

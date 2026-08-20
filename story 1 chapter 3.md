@@ -7,7 +7,8 @@
 > Grid: 4  
 > Choice Slots: 3  
 > Actions: 4  
-> Possibilities: 64
+> Possibilities: 64  
+> Maximum Placements: 15
 
 ### Description
 
@@ -22,6 +23,17 @@ Rhodey's drawing paper tears during class and the broken drawing feels important
 Rhodey needed comfort before he could talk about what happened. Once he felt heard, he was ready to try again.
 
 **Tip:** When something small upsets a child deeply, comfort them first. Let them tell you what happened before you offer a fix.
+
+### Challenge & Stars
+
+The player can make at most **15 accepted placements or replacements**. Reaching a successful outcome on the final allowed placement still completes the chapter. Otherwise, show: “Rhodey is tired. You took too long.”
+
+The face indicator changes with the current placement range. Stars are awarded only after success:
+
+- **Green face — 3 stars:** 0–5 placements
+- **Yellow face — 2 stars:** 6–9 placements
+- **Orange face — 1 star:** 10–15 placements when the chapter succeeds
+- **Red face — chapter ends without stars:** 15 placements without a successful outcome
 
 ### Grid & Choice Slot Breakdown
 

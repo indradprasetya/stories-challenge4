@@ -7,7 +7,8 @@
 > Grid: 3  
 > Choice Slots: 2  
 > Actions: 3  
-> Possibilities: 9
+> Possibilities: 9  
+> Maximum Placements: 8
 
 ### Description
 
@@ -22,6 +23,17 @@ Jojo feels hurt in the playground after Rhodey says something unkind. The confli
 Jojo needed his feelings taken seriously before anything else. Feeling safe enough to speak came first.
 
 **Tip:** When a child gets hurt by another child, validate the feeling before sorting out who did what. That safety makes it possible to talk.
+
+### Challenge & Stars
+
+The player can make at most **8 accepted placements or replacements**. Reaching a successful outcome on the final allowed placement still completes the chapter. Otherwise, show: “Jojo and Rhodey are tired. You took too long.”
+
+The face indicator changes with the current placement range. Stars are awarded only after success:
+
+- **Green face — 3 stars:** 0–3 placements
+- **Yellow face — 2 stars:** 4–5 placements
+- **Orange face — 1 star:** 6–8 placements when the chapter succeeds
+- **Red face — chapter ends without stars:** 8 placements without a successful outcome
 
 ### Grid & Choice Slot Breakdown
 

@@ -7,7 +7,8 @@
 > Grid: 4  
 > Choice Slots: 3  
 > Actions: 4  
-> Possibilities: 64
+> Possibilities: 64  
+> Maximum Placements: 15
 
 ### Description
 
@@ -22,6 +23,17 @@ Jojo is full of energy during drawing time and his noise makes it hard for Rhode
 Jojo's energy needed somewhere to go before an instruction could reach him. Getting his attention gently made the request possible.
 
 **Tip:** Get a distracted child's attention first, with a clap or their name, before asking for anything. Then the instruction has a chance to land.
+
+### Challenge & Stars
+
+The player can make at most **15 accepted placements or replacements**. Reaching a successful outcome on the final allowed placement still completes the chapter. Otherwise, show: “Jojo and Rhodey are tired. You took too long.”
+
+The face indicator changes with the current placement range. Stars are awarded only after success:
+
+- **Green face — 3 stars:** 0–5 placements
+- **Yellow face — 2 stars:** 6–9 placements
+- **Orange face — 1 star:** 10–15 placements when the chapter succeeds
+- **Red face — chapter ends without stars:** 15 placements without a successful outcome
 
 ### Grid & Choice Slot Breakdown
 

@@ -7,7 +7,8 @@
 > Grid: 4  
 > Choice Slots: 5  
 > Actions: 5  
-> Possibilities: 3125
+> Possibilities: 3125  
+> Maximum Placements: 30
 
 ### Description
 
@@ -22,6 +23,17 @@ Rhodey falls in the playground and says Jojo pushed him. Rhodey is hurt and cryi
 Rhodey was hurt and Jojo was accused, and both needed attention at the same time. Comfort and fairness had to happen together.
 
 **Tip:** When two children are upset at once, calm the hurt one and listen to both sides without blame. Fix what's broken after that.
+
+### Challenge & Stars
+
+The player can make at most **30 accepted placements or replacements**. Reaching a successful outcome on the final allowed placement still completes the chapter. Otherwise, show: “Jojo and Rhodey are tired. You took too long.”
+
+The face indicator changes with the current placement range. Stars are awarded only after success:
+
+- **Green face — 3 stars:** 0–8 placements
+- **Yellow face — 2 stars:** 9–18 placements
+- **Orange face — 1 star:** 19–30 placements when the chapter succeeds
+- **Red face — chapter ends without stars:** 30 placements without a successful outcome
 
 ### Grid & Choice Slot Breakdown
 

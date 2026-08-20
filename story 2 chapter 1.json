@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "id": "validate_jojo_feelings",
   "shortTitle": {
     "en": "That Hurt My Feelings",
@@ -30,6 +30,15 @@
   "initialState": "HURT",
   "gridCount": 3,
   "choiceCount": 2,
+  "maximumPlacements": 8,
+  "starThresholds": {
+    "threeStars": 3,
+    "twoStars": 5
+  },
+  "placementLimitMessage": {
+    "en": "Jojo and Rhodey are tired. You took too long.",
+    "id": "Jojo dan Rhodey kelelahan. Kamu terlalu lama."
+  },
   "actions": [
     {
       "id": "action_asking",
