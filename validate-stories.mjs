@@ -76,6 +76,38 @@ const chapterPages = manifest.filter(page => page.type === "chapter");
 const assetPages = manifest.filter(page => page.type === "assets");
 const techPages = manifest.filter(page => page.type === "tech");
 
+const storyList = JSON.parse(await readFile("story-list.json", "utf8"));
+assert.equal(storyList.schemaVersion, 1, "story list must use schema version 1");
+assert.equal(storyList.stories.length, 2, "story list must contain two stories");
+
+const expectedStories = [
+  { id: "school", number: 1, en: "School", idName: "Sekolah" },
+  { id: "playground", number: 2, en: "Playground", idName: "Taman Bermain" }
+];
+const documentedChapterIDs = new Set();
+for (const page of chapterPages) {
+  documentedChapterIDs.add(JSON.parse(await readFile(page.json, "utf8")).id);
+}
+const manifestChapterIDs = new Set();
+const manifestResources = new Set();
+for (const [index, story] of storyList.stories.entries()) {
+  const expected = expectedStories[index];
+  assert.deepEqual(
+    { id: story.id, number: story.number, en: story.name.en, idName: story.name.id },
+    expected,
+    `story ${index + 1} metadata mismatch`
+  );
+  assert.equal(story.chapters.length, 3, `${story.id} must contain three chapters`);
+  assert.deepEqual(story.chapters.map(chapter => chapter.number), [1, 2, 3], `${story.id} chapter order mismatch`);
+  for (const chapter of story.chapters) {
+    assert.ok(!manifestChapterIDs.has(chapter.id), `duplicate story-list chapter ID ${chapter.id}`);
+    assert.ok(!manifestResources.has(chapter.resource), `duplicate story-list resource ${chapter.resource}`);
+    manifestChapterIDs.add(chapter.id);
+    manifestResources.add(chapter.resource);
+  }
+}
+assert.deepEqual(manifestChapterIDs, documentedChapterIDs, "story list must reference all documented chapter IDs");
+
 assert.equal(manifest.length, 8, "manifest must contain six chapters, one asset page, and one tech page");
 assert.equal(chapterPages.length, 6, "manifest must contain six chapter pages");
 assert.equal(assetPages.length, 1, "manifest must contain one Artist Assets page");

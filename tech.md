@@ -67,6 +67,14 @@ Follow these rules whenever adding or changing copy:
 4. Keep image and audio asset names unchanged. `Image("story1_background")` and other asset lookups do not belong in the localization catalog.
 5. A missing UI key resolves to the key itself. Treat a visible raw key as a localization defect and add the missing translation rather than adding a hardcoded fallback in the view.
 
+## Story List Manifest
+
+`story-list.json` is the app's lightweight story catalog. It owns each story's stable ID, display order, localized English and Indonesian name, and ordered chapter resource references. The app bundles an identical copy and reads it before opening Chapter Selection.
+
+The manifest does not duplicate chapter content. Chapter button titles still come from each referenced chapter JSON's localized `shortTitle`, and gameplay data stays in that chapter file. The app loads only the selected story's chapter resources; progress gating uses the chapter IDs in the manifest without decoding chapters from other stories.
+
+`chapters.json` remains the GitHub Pages navigation manifest for chapter Markdown, artist assets, and this Technical Guide. Do not replace it with `story-list.json` or add documentation-only fields to the runtime contract.
+
 ## Core Model
 
 A grid is both a rendered story state and, unless it is the final grid, the drop target that produces the next state.

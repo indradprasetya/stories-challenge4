@@ -21,6 +21,12 @@ curl -fsS "$base_url/chapters.json" |
     ([.[] | select(.type == "assets")] | length == 1) and
     ([.[] | select(.type == "tech" and .markdown == "tech.md" and has("json") == false)] | length == 1)
   ' >/dev/null
+curl -fsS "$base_url/story-list.json" |
+  jq -e '
+    .schemaVersion == 1 and
+    (.stories | map(.id) == ["school", "playground"]) and
+    (.stories | all(.chapters | length == 3))
+  ' >/dev/null
 curl -fsS "$base_url/story%201%20chapter%201.md" | grep -q "Make Rhodey Want to Draw"
 curl -fsS "$base_url/story%201%20chapter%201.json" |
   jq -e '
