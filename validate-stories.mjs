@@ -84,9 +84,10 @@ const expectedStories = [
   { id: "school", number: 1, en: "School", idName: "Sekolah" },
   { id: "playground", number: 2, en: "Playground", idName: "Taman Bermain" }
 ];
-const documentedChapterIDs = new Set();
+const documentedChapters = new Map();
 for (const page of chapterPages) {
-  documentedChapterIDs.add(JSON.parse(await readFile(page.json, "utf8")).id);
+  const chapter = JSON.parse(await readFile(page.json, "utf8"));
+  documentedChapters.set(chapter.id, chapter);
 }
 const manifestChapterIDs = new Set();
 const manifestResources = new Set();
@@ -100,13 +101,19 @@ for (const [index, story] of storyList.stories.entries()) {
   assert.equal(story.chapters.length, 3, `${story.id} must contain three chapters`);
   assert.deepEqual(story.chapters.map(chapter => chapter.number), [1, 2, 3], `${story.id} chapter order mismatch`);
   for (const chapter of story.chapters) {
+    localized(chapter.shortTitle, `${chapter.id} story-list shortTitle`);
+    assert.deepEqual(
+      chapter.shortTitle,
+      documentedChapters.get(chapter.id)?.shortTitle,
+      `${chapter.id} story-list shortTitle must match its chapter JSON`
+    );
     assert.ok(!manifestChapterIDs.has(chapter.id), `duplicate story-list chapter ID ${chapter.id}`);
     assert.ok(!manifestResources.has(chapter.resource), `duplicate story-list resource ${chapter.resource}`);
     manifestChapterIDs.add(chapter.id);
     manifestResources.add(chapter.resource);
   }
 }
-assert.deepEqual(manifestChapterIDs, documentedChapterIDs, "story list must reference all documented chapter IDs");
+assert.deepEqual(manifestChapterIDs, new Set(documentedChapters.keys()), "story list must reference all documented chapter IDs");
 
 assert.equal(manifest.length, 8, "manifest must contain six chapters, one asset page, and one tech page");
 assert.equal(chapterPages.length, 6, "manifest must contain six chapter pages");

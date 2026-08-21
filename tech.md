@@ -69,9 +69,9 @@ Follow these rules whenever adding or changing copy:
 
 ## Story List Manifest
 
-`story-list.json` is the app's lightweight story catalog. It owns each story's stable ID, display order, localized English and Indonesian name, and ordered chapter resource references. The app bundles an identical copy and reads it before opening Chapter Selection.
+`story-list.json` is the app's lightweight story catalog. It owns each story's stable ID, display order, localized English and Indonesian name, and each chapter's localized `shortTitle` plus resource reference. The app bundles an identical copy and reads it before opening Chapter Selection.
 
-The manifest does not duplicate chapter content. Chapter button titles still come from each referenced chapter JSON's localized `shortTitle`, and gameplay data stays in that chapter file. The app loads only the selected story's chapter resources; progress gating uses the chapter IDs in the manifest without decoding chapters from other stories.
+Chapter Selection renders its buttons entirely from the manifest. Gameplay data stays in each chapter file and is decoded only after the player selects that chapter; browsing stories does not load chapter JSON. Progress gating uses the chapter IDs in the manifest without decoding chapter resources.
 
 `chapters.json` remains the GitHub Pages navigation manifest for chapter Markdown, artist assets, and this Technical Guide. Do not replace it with `story-list.json` or add documentation-only fields to the runtime contract.
 
