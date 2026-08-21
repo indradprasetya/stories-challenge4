@@ -87,6 +87,16 @@ for (const field of ["shortTitle", "completionSummary", "completionTip", "maximu
   assert.ok(techMarkdown.includes(`\`${field}\``), `Technical Guide must document ${field}`);
 }
 assert.ok(techMarkdown.includes("English and Indonesian"), "Technical Guide must document metadata localization");
+for (const localizationTerm of ["localization.json", "AppLocalization", "appLanguage"]) {
+  assert.ok(
+    techMarkdown.includes(`\`${localizationTerm}\``),
+    `Technical Guide must document ${localizationTerm}`
+  );
+}
+assert.ok(
+  techMarkdown.includes("must not be hardcoded"),
+  "Technical Guide must require UI text to use the localization catalog"
+);
 assert.ok(techMarkdown.includes("not player progress"), "Technical Guide must distinguish completion content from saved progress");
 for (const state of ["Green", "Yellow", "Orange", "Red"]) {
   assert.ok(techMarkdown.includes(`**${state}**`), `Technical Guide must document the ${state.toLowerCase()} placement state`);

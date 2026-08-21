@@ -29,6 +29,44 @@ Every chapter JSON contains localized metadata in English and Indonesian. Both `
 
 Show `completionSummary` and `completionTip` only after the chapter result is revealed. These fields are static story content, not player progress, and must remain in bundled JSON rather than `UserDefaults`.
 
+## App UI Localization
+
+The app intentionally uses its own JSON localization catalog instead of Apple's String Catalog (`.xcstrings`). This keeps the in-app language button independent from the device language and matches the bilingual story data.
+
+There are two localization sources with different responsibilities:
+
+- Chapter titles, descriptions, hints, action names, speech bubbles, completion copy, and placement-limit messages remain in their chapter JSON as `{ "en": ..., "id": ... }` values.
+- Reusable interface text such as Settings labels, alerts, Hint, Result, Try Again, chapter accessibility labels, and Guidebook copy belongs in the app's bundled `garong/Resources/localization.json` file.
+
+Every UI entry uses a namespaced key and requires both languages:
+
+```json
+{
+  "result.tryAgain": {
+    "en": "Try Again",
+    "id": "Coba Lagi"
+  }
+}
+```
+
+Views observe the shared `AppLocalization` store so a language change refreshes visible text immediately:
+
+```swift
+@ObservedObject private var localization = AppLocalization.shared
+
+Text(localization.text("result.tryAgain"))
+```
+
+The Settings language button switches between `en` and `id`. The selected code is saved in `UserDefaults` under `appLanguage`, so it remains active after the app relaunches.
+
+Follow these rules whenever adding or changing copy:
+
+1. New player-facing UI text must not be hardcoded in `Text`, `Button`, alerts, or accessibility labels. Add a key to `localization.json` first, with nonempty `en` and `id` values, then resolve it through `AppLocalization`.
+2. Do not copy story dialogue or chapter-specific content into `localization.json`; keep it in the corresponding chapter JSON.
+3. Use namespaced keys such as `settings.resetProgress`, `gameplay.hint`, or `result.next` so ownership stays clear.
+4. Keep image and audio asset names unchanged. `Image("story1_background")` and other asset lookups do not belong in the localization catalog.
+5. A missing UI key resolves to the key itself. Treat a visible raw key as a localization defect and add the missing translation rather than adding a hardcoded fallback in the view.
+
 ## Core Model
 
 A grid is both a rendered story state and, unless it is the final grid, the drop target that produces the next state.
