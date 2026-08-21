@@ -64,7 +64,7 @@ Follow these rules whenever adding or changing copy:
 1. New player-facing UI text must not be hardcoded in `Text`, `Button`, alerts, or accessibility labels. Add a key to `localization.json` first, with nonempty `en` and `id` values, then resolve it through `AppLocalization`.
 2. Do not copy story dialogue or chapter-specific content into `localization.json`; keep it in the corresponding chapter JSON.
 3. Use namespaced keys such as `settings.resetProgress`, `gameplay.hint`, or `result.next` so ownership stays clear.
-4. Keep image and audio asset names unchanged. `Image("story1_background")` and other asset lookups do not belong in the localization catalog.
+4. Keep image and audio asset names unchanged. Asset lookups such as `paper_background` and `story1_img` do not belong in the localization catalog.
 5. A missing UI key resolves to the key itself. Treat a visible raw key as a localization defect and add the missing translation rather than adding a hardcoded fallback in the view.
 
 ## Story List Manifest
@@ -72,6 +72,8 @@ Follow these rules whenever adding or changing copy:
 `story-list.json` is the app's lightweight story catalog. It owns each story's stable ID, display order, localized English and Indonesian name, and each chapter's localized `shortTitle` plus resource reference. The app bundles an identical copy and reads it before opening Chapter Selection.
 
 Chapter Selection renders its buttons entirely from the manifest. Gameplay data stays in each chapter file and is decoded only after the player selects that chapter; browsing stories does not load chapter JSON. Progress gating uses the chapter IDs in the manifest without decoding chapter resources.
+
+Chapter Selection uses one shared `paper_background` frame. The artwork for each story follows the `story{number}_img` asset convention, where `number` comes from the manifest. The localized story `name` is rendered separately in uppercase Virels, while chapter buttons use their localized `shortTitle`. Navigation derives its first, middle, and last arrow states from the manifest's story count, so adding a story requires only a new manifest entry and its matching numbered artwork asset.
 
 `chapters.json` remains the GitHub Pages navigation manifest for chapter Markdown, artist assets, and this Technical Guide. Do not replace it with `story-list.json` or add documentation-only fields to the runtime contract.
 
